@@ -1,0 +1,65 @@
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px
+) !default;
+
+$white: #f8f8ff;
+$black: #151515;
+$secondary: #40e0d0;
+$info: #951d4d;
+
+// Grid
+$gutter: 30px !default;
+
+// Grid widths
+$whole: true !default;
+$halves: true !default;
+$thirds: true !default;
+$quarters: true !default;
+$fifths: true !default;
+$sixths: false !default;
+$eighths: false !default;
+$tenths: true !default;
+$twelfths: false !default;
+$thirds: false !default;
+
+// Mediaqueries
+// If you want more breakpoints, add a nummeric suffix (e.g huge-2)
+$smallSize: 480px;
+$mediumSize: 768px;
+$largeSize: 1024px;
+$largerSize: 1200px;
+$hugeSize: 1400px;
+$massiveSize: 1680px;
+
+$small: "(min-width: #{$smallSize})";
+$medium: "(min-width: #{$mediumSize})";
+$large: "(min-width: #{$largeSize})";
+$larger: "(min-width: #{$largerSize})";
+$huge: "(min-width: #{$hugeSize})";
+$massive: "(min-width: #{$massiveSize})";
+
+// Mobile mediaqueries
+$maxMedium: "(max-width: 767px)";
+$maxLarge: "(max-width: 1023px)";
+
+// Define your breakpoints. The first value is the prefix that shall be used for
+// your classes (e.g. `.medium--one-half`), the second value is the media query
+// that the breakpoint fires at.
+$breakpoints: (
+  "small" "#{$small}",
+  "medium" "#{$medium}",
+  "large" "#{$large}",
+  "larger" "#{$larger}",
+  "huge" "#{$huge}",
+  "massive" "#{$massive}"
+) !default;
+
+// Define which namespaced breakpoints you would like to generate for each of
+// widths, push and pull. This is handy if you only need pull on, say, large, or
+// you only need a new width breakpoint at mobile sizes. It allows you to only
+// compile as much CSS as you need.
+$breakpoint-has-widths: ("medium", "large") !default;
+$breakpoint-has-push: ("medium", "large") !default;
+$breakpoint-has-pull: ("medium") !default;

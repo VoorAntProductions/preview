@@ -1,0 +1,118 @@
+@font-face {
+  font-family: "Replica Std Bold";
+  src: url("/assets/font/ReplicaStdBold.woff2") format("woff2"),
+    url("/assets/font/ReplicaStdBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Replica Std Light";
+  src: url("/assets/font/ReplicaStdLight.woff2") format("woff2"),
+    url("/assets/font/ReplicaStdLight.woff") format("woff");
+}
+
+h1 {
+  text-transform: uppercase;
+  font-family: "Replica Std Bold";
+  font-size: 5.3rem;
+  width: 43.7rem;
+  text-shadow: 0px 0px 5px $black;
+
+  @include media-breakpoint-down(sm) {
+    font-size: 2.8rem;
+    width: 18rem;
+  }
+}
+
+.h1-style {
+  text-transform: uppercase;
+  font-family: "Replica Std Bold";
+  font-size: 5.3rem;
+
+  @include media-breakpoint-down(lg) {
+    font-size: 2.5rem;
+  }
+}
+
+h2 {
+  text-transform: uppercase;
+  font-family: "Replica Std Bold";
+  font-size: 36px;
+
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    border-bottom: 2px solid $secondary;
+    width: 5%;
+  }
+}
+
+h3 {
+  text-transform: uppercase;
+  font-family: "Replica Std Bold";
+  font-size: 24px;
+}
+
+p,
+a {
+  font-size: 18px;
+}
+
+.highlight {
+  color: $secondary;
+}
+
+a:hover {
+  color: $secondary;
+  text-decoration: none;
+}
+
+.monospace-h2 {
+  letter-spacing: 75px;
+  position: relative;
+
+  @include media-breakpoint-down(md) {
+    letter-spacing: 25px;
+  }
+  @include media-breakpoint-down(sm) {
+    letter-spacing: 5px;
+  }
+}
+
+.show-mobile {
+  opacity: 0;
+  @include media-breakpoint-down(md) {
+    opacity: 1;
+  }
+}
+.bold {
+  font-family: "Replica Std Bold";
+}
+
+.small {
+  font-size: 16px;
+  word-break: break-word;
+  z-index: 1;
+}
+
+.smaller {
+  font-size: 12px;
+}
+
+.text-shadow {
+  text-shadow: 0px 0px 10px $black;
+}
+
+.text-highlight {
+  color: #40e0d0;
+}
+
+.contact {
+  font-size: 2rem;
+  padding-top: 1rem;
+  @include media-breakpoint-down(md) {
+    font-size: 1.5rem;
+  }
+}
