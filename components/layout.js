@@ -19,11 +19,6 @@ const Layout = ({ children, pageTitle, description }) => (
       <title>{pageTitle}</title>
       <meta name="description" content={description} />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      <meta property="og:url" content="https://ant-productions.com/" />
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content="Ant Productions" />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={"/assets/share.svg"} />
 
       <link
         rel="stylesheet"
