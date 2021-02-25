@@ -1,4 +1,5 @@
 import Layout from "../components/layout";
+import MusicBar from "../components/musicBar";
 import React, { useState, useEffect } from "react";
 
 export default function Home() {
@@ -40,34 +41,8 @@ export default function Home() {
         <div className="container container-XX ">
           <div className="start-screen-align">
             <div className="XX-bg">
-              <div
-                id="equalizer-start-screen"
-                className={isMuted ? "paused" : ""}
-              >
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-              </div>
+              <MusicBar muted={isMuted} id="equalizer-start-screen" />
+
               <div className="d-flex w-50 justify-around">
                 <p
                   className={isMuted === false ? "bold" : ""}
@@ -138,34 +113,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div
-        id="equalizer"
-        onClick={() => setIsMuted(!isMuted)}
-        className={isMuted ? "paused" : ""}
-      >
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
-        <div className="bar"></div>
+      <div onClick={() => setIsMuted(!isMuted)}>
+        <MusicBar muted={isMuted} id="equalizer" />
       </div>
     </Layout>
   );
