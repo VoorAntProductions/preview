@@ -31,8 +31,9 @@ a {
 
 .swiper-container-xx {
   .swiper-container {
-    height: 80vh;
+    height: 75vh;
     margin-left: 0px;
+    margin-top: -45px;
     @include media-breakpoint-down(xl) {
       margin-left: -325px;
     }
@@ -1165,7 +1166,6 @@ footer {
 .detail-image-gallery {
   object-fit: contain;
   width: 100%;
-  height: 100%;
   padding-bottom: $gutter;
 
   &:hover {
