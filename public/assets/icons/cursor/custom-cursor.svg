@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="31px" viewBox="0 0 28 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>A</title>
+    <defs>
+        <text id="text-1" font-family="ReplicaStd-Bold, Replica Std" font-size="28" font-weight="bold" fill="#F8F8FF" fill-opacity="0">
+            <tspan x="0" y="25">A</tspan>
+        </text>
+        <filter x="-42.1%" y="-25.8%" width="184.2%" height="151.6%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.250980392   0 0 0 0 0.878431373   0 0 0 0 0.815686275  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Services-iterations" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD-services-" transform="translate(-629.000000, -152.000000)" stroke="#40E0D0">
+            <g id="A" transform="translate(634.000000, 152.000000)">
+                <use fill="#F8F8FF" fill-opacity="0" stroke-opacity="1" filter="url(#filter-2)" xlink:href="#text-1"></use>
+                <use fill="#F8F8FF" fill-opacity="0" stroke-opacity="1" xlink:href="#text-1"></use>
+                <use xlink:href="#text-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>

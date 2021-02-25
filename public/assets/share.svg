@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="42px" height="42px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 5</title>
+    <g id="Services-iterations" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD-services-" transform="translate(-599.000000, -47.000000)">
+            <g id="Group-5" transform="translate(599.000000, 47.000000)">
+                <rect id="Rectangle" fill="#000000" x="0" y="0" width="42" height="42"></rect>
+                <g id="Group" transform="translate(12.000000, 5.000000)" fill="#40E0D0" font-family="ReplicaStd-Bold, Replica Std" font-weight="bold">
+                    <text id="A" font-size="28">
+                        <tspan x="0" y="25">A</tspan>
+                    </text>
+                    <text id="XX" font-size="6">
+                        <tspan x="5" y="31">XX</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

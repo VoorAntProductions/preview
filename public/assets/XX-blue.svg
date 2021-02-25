@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="575px" height="390px" viewBox="0 0 575 390" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Mask</title>
+    <defs>
+        <filter x="-5.5%" y="-8.4%" width="111.0%" height="116.8%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.250980392   0 0 0 0 0.878431373   0 0 0 0 0.815686275  0 0 0 1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <path d="M357.436975,174.444647 L271.491108,289.431452 L185.563025,174.444647 L185.563025,169.311551 L271.491108,62.7943548 L357.436975,169.311551 L357.436975,174.444647 Z M447.736142,173.892114 L447.736142,168.756913 L538.240577,56.2413783 L538.240577,5.10788622 L533.463412,0 L500.156325,0 L490.593124,5.10788622 L404.852546,117.623421 L400.093124,117.623421 L314.361417,5.10788622 L304.838137,0 L238.170735,0 L228.62084,5.10788622 L142.871391,117.623421 L138.12084,117.623421 L52.3935696,5.10788622 L42.8569818,0 L9.54102338,0 L4.75055139,5.10788622 L4.75055139,56.2413783 L95.2505514,168.756913 L95.2505514,173.892114 L0,301.725844 L0,352.870262 L4.75055139,358 L38.0931236,358 L47.6430182,352.870262 L138.12084,225.031069 L142.871391,225.031069 L233.371391,352.870262 L242.91685,358 L300.078714,358 L309.628609,352.870262 L400.093124,225.031069 L404.852546,225.031069 L495.356982,352.870262 L504.889134,358 L538.240577,358 L543,352.870262 L543,301.725844 L447.736142,173.892114 L447.736142,173.892114 Z" id="path-2"></path>
+        <filter x="-2.8%" y="-4.2%" width="105.5%" height="108.4%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feMorphology radius="1" operator="erode" in="SourceAlpha" result="shadowInner"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowInner" result="shadowInner"></feOffset>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"></feComposite>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.243137255   0 0 0 0 0.835294118   0 0 0 0 0.77254902  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="official-design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.25">
+        <g id="Desktop-HD-services-" transform="translate(-437.000000, -113.000000)">
+            <g id="Group-2" transform="translate(416.000000, 129.000000)">
+                <g id="Supra_2L_2020_007" filter="url(#filter-1)" transform="translate(37.000000, 0.000000)">
+                    <g id="Supra_2L_2020_005">
+                        <mask id="mask-3" fill="white">
+                            <use xlink:href="#path-2"></use>
+                        </mask>
+                        <g id="Mask">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-2"></use>
+                            <path stroke="#40E0D0" stroke-width="1" d="M42.7315115,0.5 L52.0617089,5.49734164 L137.873205,118.123421 L143.118988,118.123421 L228.95258,5.49747786 L238.296051,0.5 L304.712512,0.5 L314.02947,5.49722366 L399.845496,118.123421 L405.100158,118.123421 L490.924783,5.49759226 L500.281487,0.5 L533.246441,0.5 L537.740577,5.3052639 L537.740577,56.0652404 L447.236142,168.580775 L447.236142,174.057929 L542.5,301.891659 L542.5,352.674035 L538.022421,357.5 L505.015129,357.5 L495.697261,352.485579 L405.111186,224.531069 L399.834418,224.531069 L309.288399,352.485438 L299.952925,357.5 L243.042691,357.5 L233.711588,352.485457 L143.130039,224.531069 L137.862156,224.531069 L47.3028247,352.48543 L37.967335,357.5 L4.96898471,357.5 L0.5,352.674303 L0.5,301.89164 L95.7505514,174.05791 L95.7505514,168.580781 L5.25055139,56.0652471 L5.25055139,5.30566504 L9.75758282,0.5 L42.7315115,0.5 Z M271.491067,61.9980647 L185.063025,169.135016 L185.063025,174.610831 L271.491066,290.266667 L357.936975,174.610858 L357.936975,169.134987 L271.491067,61.9980647 Z" stroke-linejoin="square"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
