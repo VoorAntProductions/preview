@@ -270,7 +270,7 @@ video,
 
 .main-content {
   position: relative;
-  min-height: 83vh;
+  min-height: 81vh;
   margin-top: 150px;
 
   @include media-breakpoint-down(md) {
@@ -308,10 +308,10 @@ footer {
   position: absolute;
   z-index: 29;
   margin-top: 55vh;
-  margin-left: 15vw;
+  margin-left: 20vw;
 
   @include media-breakpoint-down(lg) {
-    margin-left: 1vw;
+    margin-left: 8vw;
   }
   @include media-breakpoint-down(md) {
     margin-left: 5vw;
