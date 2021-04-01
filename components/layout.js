@@ -30,13 +30,6 @@ const Layout = ({ children, pageTitle, description }) => (
       <Nav />
       <MobileNav />
       <div className="main-content">{children}</div>
-      <footer className="small copywright-text">
-        <div className="container">
-          <div className="row justify-content-md-center justify-content-end">
-            © {moment().format("YYYY")} Eva Denys
-          </div>
-        </div>
-      </footer>
     </div>
   </>
 );

@@ -1,9 +1,8 @@
 import Layout from "../components/layout";
 import { getImages } from "../lib/api";
-import Carousel, { Modal, ModalGateway } from "react-images";
 import React, { useState } from "react";
 import { Image, Transformation, Placeholder } from "cloudinary-react";
-import Lightbox from "react-image-lightbox";
+import FsLightbox from "fslightbox-react";
 
 export default function Locations({ images }) {
   const items = images; //… your array, filled with values
@@ -13,6 +12,10 @@ export default function Locations({ images }) {
   const imageResults1 = [];
   const imageResults2 = [];
   const imageResults3 = [];
+
+  const imageResultsLightbox1 = [];
+  const imageResultsLightbox2 = [];
+  const imageResultsLightbox3 = [];
 
   const wordsPerLine = Math.ceil(items.length / 3);
 
@@ -31,6 +34,7 @@ export default function Locations({ images }) {
       width: r.Gallery[0].width,
       height: r.Gallery[0].height
     });
+    imageResultsLightbox1.push(r.Gallery[0].url);
   });
   result[1].forEach(r => {
     imageResults2.push({
@@ -39,6 +43,7 @@ export default function Locations({ images }) {
       width: r.Gallery[0].width,
       height: r.Gallery[0].height
     });
+    imageResultsLightbox2.push(r.Gallery[0].url);
   });
   result[2].forEach(r => {
     imageResults3.push({
@@ -47,32 +52,47 @@ export default function Locations({ images }) {
       width: r.Gallery[0].width,
       height: r.Gallery[0].height
     });
+    imageResultsLightbox3.push(r.Gallery[0].url);
   });
 
-  const [currentImage, setCurrentImage] = useState(0);
-  const [viewerIsOpen, setViewerIsOpen] = useState(false);
-  const [viewerIsOpen2, setViewerIsOpen2] = useState(false);
-  const [viewerIsOpen3, setViewerIsOpen3] = useState(false);
+  const [lightboxController, setLightboxController] = useState({
+    toggler: false,
+    slide: 1
+  });
 
-  const openLightbox = index => {
-    setCurrentImage(index);
-    setViewerIsOpen(true);
-  };
-  const openLightbox2 = index => {
-    setCurrentImage(index);
-    setViewerIsOpen2(true);
-  };
-  const openLightbox3 = index => {
-    setCurrentImage(index);
-    setViewerIsOpen3(true);
-  };
+  function openLightboxOnSlide(number) {
+    const indexVideo = number + 1;
+    setLightboxController({
+      toggler: !lightboxController.toggler,
+      slide: indexVideo
+    });
+  }
 
-  const closeLightbox = () => {
-    setCurrentImage(0);
-    setViewerIsOpen(false);
-    setViewerIsOpen2(false);
-    setViewerIsOpen3(false);
-  };
+  const [lightboxController2, setLightboxController2] = useState({
+    toggler: false,
+    slide: 1
+  });
+
+  function openLightboxOnSlide2(number) {
+    const indexVideo = number + 1;
+    setLightboxController2({
+      toggler: !lightboxController2.toggler,
+      slide: indexVideo
+    });
+  }
+
+  const [lightboxController3, setLightboxController3] = useState({
+    toggler: false,
+    slide: 1
+  });
+
+  function openLightboxOnSlide3(number) {
+    const indexVideo = number + 1;
+    setLightboxController3({
+      toggler: !lightboxController3.toggler,
+      slide: indexVideo
+    });
+  }
 
   return (
     <Layout
@@ -82,8 +102,8 @@ export default function Locations({ images }) {
     architectures, city and landscapes, unusual locations, hotels and
     more. Get inspired with few of them!"
     >
-      <div className="container container-XX ">
-        <div className="content-align-center">
+      <div className="container container-XX">
+        <div className="dflex-j-center content-align-center content-locations">
           <div className="XX-bg">
             <h2 className="monospace-h2">Locations</h2>
             <p>
@@ -95,8 +115,8 @@ export default function Locations({ images }) {
           </div>
         </div>
       </div>
-      <div className="container--large container-image">
-        <div className="grid">
+      <div className="container-mine">
+        <div className="grid pt-50">
           <div className="grid__item medium--one-half large--one-third m-t40 image-margin-top">
             {imageResults1.length > 0 &&
               imageResults1.map((el, key) => (
@@ -106,11 +126,12 @@ export default function Locations({ images }) {
                     publicId={el.publicId}
                     loading="lazy"
                     alt={el.url}
-                    onClick={() => openLightbox(key)}
-                    height={186}
-                    width={310}
+                    onClick={() => openLightboxOnSlide(key)}
+                    height="auto"
+                    width={430}
+                    className="locations-image"
                   >
-                    <Transformation height={186} crop="scale" />
+                    <Transformation crop="scale" />
                     <Transformation quality="auto" fetchFormat="auto" />
                     <Placeholder type="pixelate" />
                   </Image>
@@ -126,11 +147,12 @@ export default function Locations({ images }) {
                     publicId={el.publicId}
                     loading="lazy"
                     alt={el.url}
-                    onClick={() => openLightbox2(key)}
-                    height={186}
-                    width={310}
+                    onClick={() => openLightboxOnSlide2(key)}
+                    height="auto"
+                    width={430}
+                    className="locations-image"
                   >
-                    <Transformation height={186} crop="scale" />
+                    <Transformation crop="scale" />
                     <Transformation quality="auto" fetchFormat="auto" />
                     <Placeholder type="pixelate" />
                   </Image>
@@ -146,98 +168,33 @@ export default function Locations({ images }) {
                     publicId={el.publicId}
                     loading="lazy"
                     alt={el.url}
-                    onClick={() => openLightbox3(key)}
-                    height={186}
-                    width={310}
+                    onClick={() => openLightboxOnSlide3(key)}
+                    height="auto"
+                    width={430}
+                    className="locations-image"
                   >
-                    <Transformation height={186} crop="scale" />
+                    <Transformation crop="scale" />
                     <Transformation quality="auto" fetchFormat="auto" />
                     <Placeholder type="pixelate" />
                   </Image>
                 </div>
               ))}
           </div>
-          {viewerIsOpen && (
-            <Lightbox
-              mainSrc={imageResults1[currentImage].src}
-              nextSrc={
-                imageResults1[(currentImage + 1) % imageResults1.length].src
-              }
-              prevSrc={
-                imageResults1[
-                  (currentImage + imageResults1.length - 1) %
-                    imageResults1.length
-                ].src
-              }
-              onCloseRequest={closeLightbox}
-              onMovePrevRequest={() =>
-                setCurrentImage(
-                  (currentImage + imageResults1.length - 1) %
-                    imageResults1.length
-                )
-              }
-              onMoveNextRequest={() =>
-                setCurrentImage(
-                  (currentImage + imageResults1.length + 1) %
-                    imageResults1.length
-                )
-              }
-            />
-          )}
-          {viewerIsOpen2 && (
-            <Lightbox
-              mainSrc={imageResults2[currentImage].src}
-              nextSrc={
-                imageResults2[(currentImage + 1) % imageResults2.length].src
-              }
-              prevSrc={
-                imageResults2[
-                  (currentImage + imageResults2.length - 1) %
-                    imageResults2.length
-                ].src
-              }
-              onCloseRequest={closeLightbox}
-              onMovePrevRequest={() =>
-                setCurrentImage(
-                  (currentImage + imageResults2.length - 1) %
-                    imageResults2.length
-                )
-              }
-              onMoveNextRequest={() =>
-                setCurrentImage(
-                  (currentImage + imageResults2.length + 1) %
-                    imageResults2.length
-                )
-              }
-            />
-          )}
-          {viewerIsOpen3 && (
-            <Lightbox
-              mainSrc={imageResults3[currentImage].src}
-              nextSrc={
-                imageResults3[(currentImage + 1) % imageResults3.length].src
-              }
-              prevSrc={
-                imageResults3[
-                  (currentImage + imageResults3.length - 1) %
-                    imageResults3.length
-                ].src
-              }
-              onCloseRequest={closeLightbox}
-              onMovePrevRequest={() =>
-                setCurrentImage(
-                  (currentImage + imageResults3.length - 1) %
-                    imageResults3.length
-                )
-              }
-              onMoveNextRequest={() =>
-                setCurrentImage(
-                  (currentImage + imageResults3.length + 1) %
-                    imageResults3.length
-                )
-              }
-            />
-          )}
+          <FsLightbox
+            toggler={lightboxController.toggler}
+            sources={imageResultsLightbox1}
+            slide={lightboxController.slide}
+          />
+          <FsLightbox
+            toggler={lightboxController2.toggler}
+            sources={imageResultsLightbox2}
+            slide={lightboxController2.slide}
+          />
+          <FsLightbox
+            toggler={lightboxController3.toggler}
+            sources={imageResultsLightbox3}
+            slide={lightboxController3.slide}
+          />
         </div>
       </div>
     </Layout>

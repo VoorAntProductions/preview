@@ -21,6 +21,7 @@
     "react-dom": "17.0.1",
     "react-id-swiper": "^4.0.0",
     "react-image-lightbox": "^5.1.1",
+    "react-image-video-lightbox": "^2.0.1",
     "react-images": "^1.1.7",
     "react-markdown": "^5.0.3",
     "react-photo-gallery": "^8.0.0",
@@ -28,5 +29,8 @@
     "sass": "^1.32.4",
     "styled-components": "^5.2.1",
     "swiper": "^6.4.8"
+  },
+  "devDependencies": {
+    "fslightbox-react": "^1.6.2"
   }
 }

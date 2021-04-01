@@ -64,7 +64,7 @@ const Swiperslider = ({ items, url }) => {
                     />
                   </div>
 
-                  <div className="text-center">
+                  <div className="text-center text-max-width">
                     <p className="bold small text-shadow">{element.Title}</p>
                     <p className="small">{element.Client}</p>
                   </div>

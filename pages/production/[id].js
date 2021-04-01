@@ -4,17 +4,16 @@ import Layout from "../../components/layout";
 import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/router";
 import Loading from "../../components/loading";
-import Lightbox from "react-image-lightbox";
+import FsLightbox from "fslightbox-react";
 import { Image, Transformation, Placeholder } from "cloudinary-react";
+import moment from "moment";
 
 const Production = ({ production, productions }) => {
   const router = useRouter();
-  const [currentImage, setCurrentImage] = useState(0);
-  const [viewerIsOpen, setViewerIsOpen] = useState(false);
-  const [viewerIsOpenHeadImage, setViewerIsOpenHeadImage] = useState(false);
   const galleryArray = [];
-  const videoArray = [];
+  let quantityVideos = 0;
   const productionsArrayIds = [];
+  const [toggler, setToggler] = useState(false);
 
   let previousId;
   let nextId;
@@ -44,35 +43,57 @@ const Production = ({ production, productions }) => {
       }
     }
 
-    const openLightbox = index => {
-      setCurrentImage(index);
-      setViewerIsOpen(true);
-    };
-
-    const closeLightbox = () => {
-      setCurrentImage(0);
-      setViewerIsOpen(false);
-    };
-
-    if (production.Gallery) {
-      production.Gallery.map(image => {
-        if (image.provider_metadata) {
-          galleryArray.push({
-            publicId: image.provider_metadata.public_id,
-            url: image.url
-          });
-        }
+    if (production.HeadImage.url) {
+      galleryArray.push(production.HeadImage.url);
+    }
+    if (production.VimeoVideoIDSeparateWithComma) {
+      const array = production.VimeoVideoIDSeparateWithComma.split(", ");
+      quantityVideos = array.length;
+      array.map(item => {
+        galleryArray.push(
+          <iframe
+            src={`https://player.vimeo.com/video/${item}?api=1;`}
+            width="1920px"
+            height="1080px"
+            frameBorder="0"
+            allow="autoplay; fullscreen"
+            allowFullScreen
+          />
+        );
       });
     }
-
-    if (production.VimeoVideoIDsSeparateWithComma) {
-      const array = production.VimeoVideoIDsSeparateWithComma.split(", ");
-      array.map(item => {
-        videoArray.push(item);
+    if (production.Gallery) {
+      production.Gallery.map(image => {
+        const url = image.url;
+        if (image.provider_metadata) {
+          galleryArray.push(url);
+        }
       });
     }
     return (
       <Layout pageTitle={production.Title} description={production.Description}>
+        {previousId && (
+          <a href={`/production/${previousId}`}>
+            <img
+              src="/assets/icons/previous.svg"
+              alt=""
+              width="60"
+              height="60"
+              className="icon icon-previous"
+            />
+          </a>
+        )}
+        {nextId && (
+          <a href={`/production/${nextId}`}>
+            <img
+              src="/assets/icons/next.svg"
+              alt=""
+              width="60"
+              height="60"
+              className="icon icon-next"
+            />
+          </a>
+        )}
         <div className="container-mine">
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb small pt-4">
@@ -84,145 +105,88 @@ const Production = ({ production, productions }) => {
               </li>
             </ol>
           </nav>
-          <div className="text-right">
-            {previousId && (
-              <a href={`/production/${previousId}`}>
-                <img
-                  src="/assets/icons/arrow-white.svg"
-                  alt=""
-                  width="30"
-                  className="left arrow"
-                />
-              </a>
-            )}
-            {nextId && (
-              <a href={`/production/${nextId}`}>
-                {" "}
-                <img
-                  src="/assets/icons/arrow-white.svg"
-                  alt=""
-                  width="30"
-                  className="right arrow"
-                />
-              </a>
-            )}
-          </div>
-        </div>
-        {production.HeadImage && production.HeadImage.provider_metadata ? (
-          <Image
-            dpr="auto"
-            crop="scale"
-            responsiveUseBreakpoints="true"
-            cloudName="dx8wgl3t3"
-            publicId={production.HeadImage.provider_metadata.public_id}
-            loading="lazy"
-            alt={production.HeadImage.url}
-            onClick={() => setViewerIsOpenHeadImage(true)}
-            width={1041}
-            height={670}
-            className="video detail-head-image"
-          >
-            <Transformation quality="auto" fetchFormat="auto" />
-            <Placeholder type="pixelate" />
-          </Image>
-        ) : (
-          <img
-            src="../assets/no-image.svg"
-            alt="No image found"
-            width="1041"
-            height="670"
-            className="video detail-head-image"
-          />
-        )}
-        <div className="w-25 text-container">
-          <h2>{production.Title}</h2>
-          <p className="m-t30">
-            {production.Location} on {production.Date}
-          </p>
-          <ReactMarkdown source={production.Description} />
-          {production.Gallery && production.Gallery.length > 0 && (
-            <div className="mouse-scroll-div">
-              <a className="mouse-scroll" href="#gallery">
-                <span className="mouse">
-                  <span className="mouse-movement"></span>
-                </span>
-                <span className="mouse-message fadeIn">scroll</span>
-              </a>
-            </div>
-          )}
-        </div>
-        <div className="container-mine">
-          <div className="grid equal-h m-t90" id="gallery">
-            {galleryArray &&
-              galleryArray.length > 0 &&
-              galleryArray.map((el, key) => (
-                <div
-                  className="grid__item one-half medium--one-third large--one-fifth"
-                  key={key}
-                >
+          <div className="grid">
+            <div className="grid__item large--two-thirds rm-padding">
+              <div className="head_image">
+                <div className="head_image_overlays">
+                  {quantityVideos > 0 && (
+                    <div className="align-center gallery-block">
+                      <img
+                        src="../assets/icons/video.svg"
+                        width="25"
+                        alt="No image found"
+                        className="mr-15"
+                      />
+                      ({quantityVideos}) videos
+                    </div>
+                  )}
+                  {production.Gallery.length > 0 && (
+                    <div className="align-center gallery-block">
+                      <img
+                        src="../assets/icons/gallery.svg"
+                        alt="No image found"
+                        width="25"
+                        className="mr-15"
+                      />
+                      ({production.Gallery.length + 1}) photos
+                    </div>
+                  )}
+                </div>
+                {production.HeadImage &&
+                production.HeadImage.provider_metadata ? (
                   <Image
+                    dpr="auto"
+                    crop="scale"
+                    responsiveUseBreakpoints="true"
                     cloudName="dx8wgl3t3"
-                    publicId={el.publicId}
+                    publicId={production.HeadImage.provider_metadata.public_id}
                     loading="lazy"
-                    alt={el.url}
-                    onClick={() => openLightbox(key)}
-                    className="detail-image-gallery"
-                    height={171}
-                    width={171}
+                    alt={production.HeadImage.url}
+                    onClick={() => setToggler(!toggler)}
+                    width={925}
+                    height={670}
+                    className="video detail-head-image"
                   >
-                    <Transformation height={171} crop="scale" />
                     <Transformation quality="auto" fetchFormat="auto" />
                     <Placeholder type="pixelate" />
                   </Image>
-                </div>
-              ))}
-            {videoArray &&
-              videoArray.length > 0 &&
-              videoArray.map((el, key) => (
-                <div
-                  className="grid__item one-half medium--one-third large--one-fifth"
-                  key={key}
-                >
-                  <iframe
-                    src={`https://player.vimeo.com/video/${el}`}
-                    frameBorder="0"
-                    allowFullScreen
-                    className="detail-image-gallery"
-                  ></iframe>
-                </div>
-              ))}
+                ) : (
+                  <img
+                    src="../assets/no-image.svg"
+                    alt="No image found"
+                    width="1041"
+                    height="670"
+                    className="video detail-head-image"
+                  />
+                )}
+              </div>
+            </div>
+            <div className="grid__item large--one-third mb-60">
+              <h2 className="small--m-t30">{production.Title}</h2>
+              <p className="m-t30">
+                {production.Client}
+                <br></br>
+                {production.Location}
+                <br></br>
+                {production.Date && moment(production.Date).format("MMMM YYYY")}
+              </p>
+              <ReactMarkdown source={production.Description} />
+            </div>
           </div>
-          {viewerIsOpen && (
-            <Lightbox
-              mainSrc={galleryArray[currentImage].url}
-              nextSrc={
-                galleryArray[(currentImage + 1) % galleryArray.length].url
-              }
-              prevSrc={
-                galleryArray[
-                  (currentImage + galleryArray.length - 1) % galleryArray.length
-                ].url
-              }
-              onCloseRequest={closeLightbox}
-              onMovePrevRequest={() =>
-                setCurrentImage(
-                  (currentImage + galleryArray.length - 1) % galleryArray.length
-                )
-              }
-              onMoveNextRequest={() =>
-                setCurrentImage(
-                  (currentImage + galleryArray.length + 1) % galleryArray.length
-                )
-              }
-            />
-          )}
-          {viewerIsOpenHeadImage && (
-            <Lightbox
-              mainSrc={production.HeadImage.url}
-              onCloseRequest={() => setViewerIsOpenHeadImage(false)}
-            />
-          )}
+
+          {/* <div className="w-25">
+            <h2>{production.Title}</h2>
+            <p className="m-t30">
+              {production.Client}
+              <br></br>
+              {production.Location}
+              <br></br>
+              {production.Date && moment(production.Date).format("MMMM YYYY")}
+            </p>
+            <ReactMarkdown source={production.Description} />
+          </div> */}
         </div>
+        <FsLightbox toggler={toggler} sources={galleryArray} />
       </Layout>
     );
   }

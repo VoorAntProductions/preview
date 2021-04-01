@@ -1,4 +1,5 @@
 import Layout from "../components/layout";
+import Footer from "../components/footer";
 import MusicBar from "../components/musicBar";
 import React, { useState, useEffect } from "react";
 
@@ -73,49 +74,55 @@ export default function Home() {
   }
 
   return (
-    <Layout pageTitle="Ant Productions" description="Ant Productions home page">
-      <style jsx global>{`
-        body {
-          background: transparent;
-        }
-        .nav {
-          background: transparent;
-        }
-        .mobile-nav {
-          background: transparent;
-        }
-        #equalizer {
-          height: 50px;
-        }
-        .bar {
-          cursor: url("/assets/icons/cursor/cursor-hover.svg"), auto;
-        }
-      `}</style>
+    <>
+      <Layout
+        pageTitle="Ant Productions"
+        description="Ant Productions home page"
+      >
+        <style jsx global>{`
+          body {
+            background: transparent;
+          }
+          .nav {
+            background: transparent;
+          }
+          .mobile-nav {
+            background: transparent;
+          }
+          #equalizer {
+            height: 50px;
+          }
+          .bar {
+            cursor: url("/assets/icons/cursor/cursor-hover.svg"), auto;
+          }
+        `}</style>
 
-      <video autoPlay muted={isMuted} loop className="test">
-        <source src="assets/tre.mp4" type="video/mp4" />
-        <source src="assets/tre.ogg" type="video/ogg" />
-        <source src="assets/tre.webm" type="video/webm" />
-        Your browser does not support HTML video.
-      </video>
-      <div className="container align-end">
-        <div>
-          <h1>
-            Our <span className="highlight">ants</span> move mountains
-          </h1>
-          <div className="m-t50 home-buttons">
-            <a href="/events" className="btn-outline btn-1">
-              events
-            </a>
-            <a href="/productions" className="btn-outline btn-2">
-              Productions
-            </a>
+        <video autoPlay muted={isMuted} loop className="test">
+          <source src="assets/tre.mp4" type="video/mp4" />
+          <source src="assets/tre.ogg" type="video/ogg" />
+          <source src="assets/tre.webm" type="video/webm" />
+          Your browser does not support HTML video.
+        </video>
+        <div className="container-mine align-end">
+          <div>
+            <h1>
+              Our <span className="highlight">ants</span> move mountains
+            </h1>
+            <div className="m-t50 home-buttons">
+              <a href="/events" className="btn-outline btn-1">
+                events
+              </a>
+              <a href="/productions" className="btn-outline btn-2">
+                Productions
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-      <div onClick={() => setIsMuted(!isMuted)}>
-        <MusicBar muted={isMuted} id="equalizer" />
-      </div>
-    </Layout>
+        <div onClick={() => setIsMuted(!isMuted)}>
+          <MusicBar muted={isMuted} id="equalizer" />
+        </div>
+      </Layout>
+      <Footer />
+    </>
   );
 }

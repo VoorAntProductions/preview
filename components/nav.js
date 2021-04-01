@@ -39,8 +39,9 @@ const mainNav = () => {
       <Nav.Item>
         <Nav.Link href="/">
           <img
-            src="/assets/logo-w.svg"
+            src="/assets/logo-w.png"
             alt="Logo of Ant Productions in white"
+            width="300"
           />
         </Nav.Link>
       </Nav.Item>
