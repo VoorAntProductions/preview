@@ -43,7 +43,7 @@ const Production = ({ production, productions }) => {
       }
     }
 
-    if (production.HeadImage.url) {
+    if (production.HeadImage) {
       galleryArray.push(production.HeadImage.url);
     }
     if (production.VimeoVideoIDSeparateWithComma) {
