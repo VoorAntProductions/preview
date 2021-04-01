@@ -120,7 +120,7 @@ const Production = ({ production, productions }) => {
                       ({quantityVideos}) videos
                     </div>
                   )}
-                  {production.Gallery.length > 0 && (
+                  {production.Gallery && production.Gallery.length > 0 && (
                     <div className="align-center gallery-block">
                       <img
                         src="../assets/icons/gallery.svg"
