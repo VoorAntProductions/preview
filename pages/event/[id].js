@@ -43,7 +43,7 @@ const Event = ({ event, events }) => {
       }
     }
 
-    if (event.HeadImage.url) {
+    if (event.HeadImage) {
       galleryArray.push(event.HeadImage.url);
     }
     if (event.VimeoVideoIDSeparateWithComma) {
