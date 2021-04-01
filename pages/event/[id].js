@@ -121,7 +121,7 @@ const Event = ({ event, events }) => {
                       ({quantityVideos}) videos
                     </div>
                   )}
-                  {event.Gallery.length > 0 && (
+                  {event.Gallery && event.Gallery.length > 0 && (
                     <div className="align-center gallery-block">
                       <img
                         src="../assets/icons/gallery.svg"
