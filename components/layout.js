@@ -7,8 +7,8 @@ import React from "react";
 const inputEl = React.createRef();
 
 const handleMouseMove = e => {
-  const Ytest = e.pageY + 50;
-  const Xtest = e.pageX + 5;
+  const Ytest = e.pageY + 55;
+  const Xtest = e.pageX + 9.5;
   inputEl.current.style.top = `${Ytest}px`;
   inputEl.current.style.left = `${Xtest}px`;
 };
