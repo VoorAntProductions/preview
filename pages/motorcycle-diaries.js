@@ -45,7 +45,7 @@ export default function MotorcycleDiaries({
       const vimeoNumber = image.VimeoNumber;
       galleryArray.push(
         <iframe
-          src={`https://player.vimeo.com/video/${vimeoNumber}?api=1;`}
+          src={`https://player.vimeo.com/video/${vimeoNumber}?api=1;&autoplay=1`}
           width="1920px"
           height="1080px"
           frameBorder="0"

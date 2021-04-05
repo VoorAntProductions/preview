@@ -74,7 +74,7 @@ const Event = ({ event, events }) => {
     return (
       <Layout pageTitle={event.Title} description={event.Description}>
         {previousId && (
-          <a href={`/production/${previousId}`}>
+          <a href={`/event/${previousId}`}>
             <img
               src="/assets/icons/previous.svg"
               alt=""
@@ -85,7 +85,7 @@ const Event = ({ event, events }) => {
           </a>
         )}
         {nextId && (
-          <a href={`/production/${nextId}`}>
+          <a href={`/event/${nextId}`}>
             <img
               src="/assets/icons/next.svg"
               alt=""
@@ -99,7 +99,7 @@ const Event = ({ event, events }) => {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb small pt-4">
               <li className="breadcrumb-item active">
-                <a href="/productions">PRODUCTIONS</a>
+                <a href="/events">EVENTS</a>
               </li>
               <li className="breadcrumb-item non-active" aria-current="page">
                 {event.Title}

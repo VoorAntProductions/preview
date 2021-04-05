@@ -16,7 +16,7 @@ export default function About({ aboutInfo }) {
             <ReactMarkdown source={aboutInfo.Description} />
           </div>
           <div className="grid__item grid__item-special large--two-thirds">
-            <video controls width="872" className="about-video">
+            <video autoPlay controls width="872" className="about-video">
               <source src="assets/about.mp4" type="video/mp4" />
               <source src="assets/about.webm" type="video/webm" />
               Your browser does not support the video tag.

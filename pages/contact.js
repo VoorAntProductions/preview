@@ -34,7 +34,7 @@ export default function Contact({ contactInfo }) {
                     <div className="grid__item two-thirds">
                       <a
                         href={`tel:${contactInfo.PhoneNumber1}`}
-                        className="m-t5"
+                        className="m-t5 p-25"
                       >
                         {contactInfo.PhoneNumber1}
                       </a>
@@ -55,7 +55,7 @@ export default function Contact({ contactInfo }) {
                     <div className="grid__item two-thirds">
                       <a
                         href={`tel:${contactInfo.PhoneNumber2}`}
-                        className="m-t5"
+                        className="m-t5 p-25"
                       >
                         {contactInfo.PhoneNumber2}
                       </a>
@@ -74,7 +74,10 @@ export default function Contact({ contactInfo }) {
                       />
                     </div>
                     <div className="grid__item two-thirds">
-                      <a href={`mailto:${contactInfo.Email}`} className="m-t5">
+                      <a
+                        href={`mailto:${contactInfo.Email}`}
+                        className="m-t5 p-25"
+                      >
                         {contactInfo.Email}
                       </a>
                     </div>
@@ -95,7 +98,7 @@ export default function Contact({ contactInfo }) {
                       <a
                         href={contactInfo.GoogleMapsLink}
                         target="_blank"
-                        className="m-t5"
+                        className="m-t5 p-25"
                       >
                         {contactInfo.Adress}
                       </a>
@@ -124,6 +127,7 @@ export default function Contact({ contactInfo }) {
                     <a
                       href="https://www.facebook.com/AntProductionsBelgium/"
                       target="_blank"
+                      className="p-25"
                     >
                       Ant Productions
                     </a>
@@ -144,6 +148,7 @@ export default function Contact({ contactInfo }) {
                     <a
                       href="https://www.instagram.com/ant_productions_xx/"
                       target="_blank"
+                      className="p-25"
                     >
                       ant_productions_xx
                     </a>
@@ -164,6 +169,7 @@ export default function Contact({ contactInfo }) {
                     <a
                       href="https://www.linkedin.com/company/ant-productions-xx/"
                       target="_blank"
+                      className="p-25"
                     >
                       ant-productions-xx
                     </a>
