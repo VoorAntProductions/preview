@@ -46,13 +46,13 @@ export default function Home() {
 
               <div className="d-flex w-50 justify-around">
                 <p
-                  className={isMuted === false ? "bold" : ""}
+                  className={isMuted === false ? "bold pf-25" : "pf-25"}
                   onClick={() => setIsMuted(false)}
                 >
                   ON
                 </p>
                 <p
-                  className={isMuted === true ? "bold" : ""}
+                  className={isMuted === true ? "bold pf-25" : "pf-25"}
                   onClick={() => setIsMuted(true)}
                 >
                   OFF
