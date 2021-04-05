@@ -31,6 +31,14 @@ a {
     padding: 0px;
   }
 }
+
+.pf-25 {
+  padding: 25px;
+  @include media-breakpoint-down(md) {
+    padding: 0px;
+  }
+}
+
 .pt-50 {
   padding-top: 45vh;
 }
