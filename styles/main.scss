@@ -13,8 +13,7 @@ body {
   background: $black;
   font-family: "Replica Std Light";
   scroll-behavior: smooth;
-  cursor: url("https://preview-ant-productions.vercel.app/assets/icons/cursor/cursor-final.png"),
-    auto;
+  cursor: url("/assets/icons/cursor/test.png"), auto;
 }
 
 a {
@@ -26,6 +25,12 @@ a {
   box-sizing: border-box;
 }
 
+.p-25 {
+  padding: 25px 0;
+  @include media-breakpoint-down(md) {
+    padding: 0px;
+  }
+}
 .pt-50 {
   padding-top: 45vh;
 }
@@ -161,21 +166,18 @@ iframe:hover,
 .fslightbox-toolbar:hover,
 .overlay:hover,
 img:hover {
-  cursor: url("https://preview-ant-productions.vercel.app/assets/icons/cursor/cursor-hover.png"),
-    auto;
+  cursor: url("/assets/icons/cursor/test-hover.png"), auto;
 }
 
 .clients:hover {
-  cursor: url("https://preview-ant-productions.vercel.app/assets/icons/cursor/cursor-final.png"),
-    auto !important;
+  cursor: url("/assets/icons/cursor/test-hover.png"), auto !important;
 }
 video,
 .video {
   border-radius: 6px;
   box-shadow: 0px 0px 10px $secondary;
   &:hover {
-    cursor: url("https://preview-ant-productions.vercel.app/assets/icons/cursor/cursor-hover.png"),
-      auto;
+    cursor: url("/assets/icons/cursor/test-hover.png"), auto;
   }
 }
 
@@ -571,7 +573,7 @@ footer {
 .justify-around {
   justify-content: space-around;
   p:hover {
-    cursor: url("/assets/icons/cursor/cursor-hover.svg"), auto;
+    cursor: url("/assets/icons/cursor/test-hover.png"), auto;
   }
 }
 
@@ -927,9 +929,9 @@ footer {
     width: 3px;
     animation: jump 0ms -800ms linear infinite alternate;
     &:hover {
-      cursor: url("/assets/icons/cursor/cursor-hover.svg"), auto;
+      cursor: url("/assets/icons/cursor/test-hover.png"), auto;
     }
-    cursor: url("/assets/icons/cursor/cursor.svg"), auto;
+    cursor: url("/assets/icons/cursor/test.png"), auto;
   }
   @keyframes jump {
     0% {
@@ -960,7 +962,7 @@ footer {
   }
 
   &:hover {
-    cursor: url("/assets/icons/cursor/cursor-hover.svg"), auto;
+    cursor: url("/assets/icons/cursor/test-hover.png"), auto;
   }
 }
 
@@ -979,9 +981,9 @@ footer {
     width: 3px;
     animation: jump 0ms -800ms linear infinite alternate;
     &:hover {
-      cursor: url("/assets/icons/cursor/cursor-hover.svg"), auto;
+      cursor: url("/assets/icons/cursor/test-hover.png"), auto;
     }
-    cursor: url("/assets/icons/cursor/cursor.svg"), auto;
+    cursor: url("/assets/icons/cursor/test.png"), auto;
   }
   @keyframes jump {
     0% {
@@ -1012,9 +1014,9 @@ footer {
   }
 
   &:hover {
-    cursor: url("/assets/icons/cursor/cursor-hover.svg"), auto;
+    cursor: url("/assets/icons/cursor/test-hover.png"), auto;
   }
-  cursor: url("/assets/icons/cursor/cursor.svg"), auto;
+  cursor: url("/assets/icons/cursor/test.png"), auto;
   @include media-breakpoint-down(sm) {
     justify-content: flex-end;
   }
@@ -1061,7 +1063,7 @@ footer {
   height: 3px;
 
   &:hover {
-    cursor: url("/assets/icons/cursor/cursor-hover.svg"), auto;
+    cursor: url("/assets/icons/cursor/test-hover.png"), auto;
   }
 }
 
@@ -1241,16 +1243,6 @@ footer {
   height: 100vh;
 }
 
-.detail-image-gallery {
-  object-fit: contain;
-  width: 100%;
-  padding-bottom: $gutter;
-
-  &:hover {
-    cursor: url("/assets/icons/cursor/cursor-hover.svg"), auto;
-  }
-}
-
 .loading-animation {
   width: 50%;
   height: 50%;
@@ -1262,7 +1254,7 @@ footer {
   }
 
   &:hover {
-    cursor: url("/assets/icons/cursor/cursor.png"), auto;
+    cursor: url("/assets/icons/cursor/test.png"), auto;
   }
 }
 
@@ -1293,6 +1285,7 @@ footer {
 
   &:hover {
     filter: grayscale(0%);
+    cursor: url("/assets/icons/cursor/test-hover.png"), auto;
   }
 }
 
