@@ -9,7 +9,7 @@ const MusicBar = params => {
     <div
       id={params.id}
       onClick={() => setIsMuted(!isMuted)}
-      className={isMuted ? "paused" : ""}
+      className={isMuted ? "paused p-25" : "p-25"}
     >
       <div className="bar"></div>
       <div className="bar"></div>
