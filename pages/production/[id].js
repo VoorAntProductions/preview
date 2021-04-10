@@ -46,13 +46,13 @@ const Production = ({ production, productions }) => {
     if (production.HeadImage) {
       galleryArray.push(production.HeadImage.url);
     }
-    if (production.VimeoVideoIDSeparateWithComma) {
-      const array = production.VimeoVideoIDSeparateWithComma.split(", ");
+    if (production.VimeoVideoIDsSeparateWithComma) {
+      const array = production.VimeoVideoIDsSeparateWithComma.split(", ");
       quantityVideos = array.length;
       array.map(item => {
         galleryArray.push(
           <iframe
-            src={`https://player.vimeo.com/video/${item}?api=1;`}
+            src={`https://player.vimeo.com/video/${item}?api=1&autoplay=1;`}
             width="1920px"
             height="1080px"
             frameBorder="0"
@@ -143,10 +143,14 @@ const Production = ({ production, productions }) => {
                     loading="lazy"
                     alt={production.HeadImage.url}
                     onClick={() => setToggler(!toggler)}
-                    width={925}
-                    height={670}
                     className="video detail-head-image"
                   >
+                    <Transformation
+                      width="926"
+                      height="670"
+                      crop="fill"
+                      aspectRatio="2"
+                    />
                     <Transformation quality="auto" fetchFormat="auto" />
                     <Placeholder type="pixelate" />
                   </Image>
@@ -186,7 +190,11 @@ const Production = ({ production, productions }) => {
             <ReactMarkdown source={production.Description} />
           </div> */}
         </div>
-        <FsLightbox toggler={toggler} sources={galleryArray} />
+        <FsLightbox
+          toggler={toggler}
+          sources={galleryArray}
+          loadOnlyCurrentSource={true}
+        />
       </Layout>
     );
   }

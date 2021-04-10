@@ -17,6 +17,10 @@ export default function Locations({ images }) {
   const imageResultsLightbox2 = [];
   const imageResultsLightbox3 = [];
 
+  let newimageResultsLightbox1,
+    newimageResultsLightbox2,
+    newimageResultsLightbox3;
+
   const wordsPerLine = Math.ceil(items.length / 3);
 
   for (let line = 0; line < n; line++) {
@@ -54,6 +58,24 @@ export default function Locations({ images }) {
     });
     imageResultsLightbox3.push(r.Gallery[0].url);
   });
+  if (
+    imageResultsLightbox1.length === result[0].length &&
+    imageResultsLightbox2.length === result[1].length &&
+    imageResultsLightbox3.length === result[2].length
+  ) {
+    newimageResultsLightbox1 = imageResultsLightbox1.concat(
+      imageResultsLightbox2,
+      imageResultsLightbox3
+    );
+    newimageResultsLightbox2 = imageResultsLightbox2.concat(
+      imageResultsLightbox3,
+      imageResultsLightbox1
+    );
+    newimageResultsLightbox3 = imageResultsLightbox3.concat(
+      imageResultsLightbox1,
+      imageResultsLightbox2
+    );
+  }
 
   const [lightboxController, setLightboxController] = useState({
     toggler: false,
@@ -127,12 +149,17 @@ export default function Locations({ images }) {
                     loading="lazy"
                     alt={el.url}
                     onClick={() => openLightboxOnSlide(key)}
-                    height="auto"
-                    width={430}
+                    // height="auto"
+                    // width={430}
                     className="locations-image"
                   >
-                    <Transformation crop="scale" />
-                    <Transformation quality="auto" fetchFormat="auto" />
+                    <Transformation crop="fill" width="430" />
+                    <Transformation
+                      quality="auto"
+                      fetchFormat="auto"
+                      flag="lossy"
+                      format="jpg"
+                    />
                     <Placeholder type="pixelate" />
                   </Image>
                 </div>
@@ -148,12 +175,17 @@ export default function Locations({ images }) {
                     loading="lazy"
                     alt={el.url}
                     onClick={() => openLightboxOnSlide2(key)}
-                    height="auto"
-                    width={430}
+                    // height="auto"
+                    // width={430}
                     className="locations-image"
                   >
-                    <Transformation crop="scale" />
-                    <Transformation quality="auto" fetchFormat="auto" />
+                    <Transformation crop="fill" width="430" />
+                    <Transformation
+                      quality="auto"
+                      fetchFormat="auto"
+                      flag="lossy"
+                      format="jpg"
+                    />
                     <Placeholder type="pixelate" />
                   </Image>
                 </div>
@@ -169,12 +201,17 @@ export default function Locations({ images }) {
                     loading="lazy"
                     alt={el.url}
                     onClick={() => openLightboxOnSlide3(key)}
-                    height="auto"
-                    width={430}
+                    // height="auto"
+                    // width={430}
                     className="locations-image"
                   >
-                    <Transformation crop="scale" />
-                    <Transformation quality="auto" fetchFormat="auto" />
+                    <Transformation crop="fill" width="430" />
+                    <Transformation
+                      quality="auto"
+                      fetchFormat="auto"
+                      flag="lossy"
+                      format="jpg"
+                    />
                     <Placeholder type="pixelate" />
                   </Image>
                 </div>
@@ -182,17 +219,17 @@ export default function Locations({ images }) {
           </div>
           <FsLightbox
             toggler={lightboxController.toggler}
-            sources={imageResultsLightbox1}
+            sources={newimageResultsLightbox1}
             slide={lightboxController.slide}
           />
           <FsLightbox
             toggler={lightboxController2.toggler}
-            sources={imageResultsLightbox2}
+            sources={newimageResultsLightbox2}
             slide={lightboxController2.slide}
           />
           <FsLightbox
             toggler={lightboxController3.toggler}
-            sources={imageResultsLightbox3}
+            sources={newimageResultsLightbox3}
             slide={lightboxController3.slide}
           />
         </div>

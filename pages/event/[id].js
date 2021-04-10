@@ -143,10 +143,14 @@ const Event = ({ event, events }) => {
                     loading="lazy"
                     alt={event.HeadImage.url}
                     onClick={() => setToggler(!toggler)}
-                    width={925}
-                    height={670}
                     className="video detail-head-image"
                   >
+                    <Transformation
+                      width="926"
+                      height="670"
+                      crop="fill"
+                      aspectRatio="2"
+                    />
                     <Transformation quality="auto" fetchFormat="auto" />
                     <Placeholder type="pixelate" />
                   </Image>

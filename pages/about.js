@@ -2,6 +2,17 @@ import Layout from "../components/layout";
 import { getAboutInfo } from "../lib/api";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
+// Import Swiper React components
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Mousewheel
+} from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+// install Swiper components
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 
 export default function About({ aboutInfo }) {
   return (
@@ -26,10 +37,41 @@ export default function About({ aboutInfo }) {
         <div className="dflex-j-center m-40-0">
           <h3>Our clients</h3>
         </div>
-        <div className="grid">
+        <Swiper
+          spaceBetween={7}
+          slidesPerView={5}
+          speed={500}
+          mousewheel={true}
+          scrollbar={{
+            el: ".swiper-scrollbar",
+            draggable: true
+          }}
+          breakpoints={{
+            1440: {
+              slidesPerView: 7,
+              spaceBetween: 5
+            },
+            1024: {
+              slidesPerView: 10,
+              spaceBetween: 5
+            },
+            768: {
+              slidesPerView: 5,
+              spaceBetween: 5
+            },
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 2
+            },
+            320: {
+              slidesPerView: 2,
+              spaceBetween: 1
+            }
+          }}
+        >
           {aboutInfo.ClientLogos.length > 0 &&
             aboutInfo.ClientLogos.map((m, i) => (
-              <div className="grid__item one-half medium--one-eighth" key={i}>
+              <SwiperSlide key={i} className="overlay-cont">
                 <Image
                   src={m.url}
                   alt={m.url}
@@ -37,9 +79,10 @@ export default function About({ aboutInfo }) {
                   height="auto"
                   className="obj-contain clients client-logos"
                 />
-              </div>
+              </SwiperSlide>
             ))}
-        </div>
+          <div className="swiper-scrollbar"></div>
+        </Swiper>
       </div>
     </Layout>
   );

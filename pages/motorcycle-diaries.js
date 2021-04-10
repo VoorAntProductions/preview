@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import ReactDOM from "react-dom";
 import Layout from "../components/layout";
 import {
   getMotorcycleDiariesInfo,
@@ -45,7 +46,7 @@ export default function MotorcycleDiaries({
       const vimeoNumber = image.VimeoNumber;
       galleryArray.push(
         <iframe
-          src={`https://player.vimeo.com/video/${vimeoNumber}?api=1;&autoplay=1`}
+          src={`https://player.vimeo.com/video/${vimeoNumber}?api=1&autoplay=1;`}
           width="1920px"
           height="1080px"
           frameBorder="0"
@@ -129,6 +130,8 @@ export default function MotorcycleDiaries({
                 <div
                   onClick={() => openLightboxOnSlide(i)}
                   className="overlay"
+                  data-class="fslightbox-source test"
+                  data-fslightbox="lightbox"
                 ></div>
                 <iframe
                   src={`https://player.vimeo.com/video/${m.VimeoNumber}`}
@@ -145,6 +148,8 @@ export default function MotorcycleDiaries({
         toggler={lightboxController.toggler}
         sources={galleryArray}
         slide={lightboxController.slide}
+        type="video"
+        loadOnlyCurrentSource={true}
       />
     </Layout>
   );
