@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 
 const mainNav = () => {
   const router = useRouter();
-  const [show, setShow] = useState(false);
 
   return (
     <Nav className="justify-content-center desktop-nav">
@@ -27,6 +26,7 @@ const mainNav = () => {
       >
         <Nav.Link href="/productions">productions</Nav.Link>
       </Nav.Item>
+
       <Nav.Item
         className={
           router.route === "/locations"
@@ -36,6 +36,7 @@ const mainNav = () => {
       >
         <Nav.Link href="/locations">locations</Nav.Link>
       </Nav.Item>
+
       <Nav.Item>
         <Nav.Link href="/">
           <img
@@ -45,6 +46,7 @@ const mainNav = () => {
           />
         </Nav.Link>
       </Nav.Item>
+
       <Nav.Item
         className={
           router.route === "/motorcycle-diaries"
@@ -54,6 +56,7 @@ const mainNav = () => {
       >
         <Nav.Link href="/motorcycle-diaries">motorcycle diaries</Nav.Link>
       </Nav.Item>
+
       <Nav.Item
         className={
           router.route === "/about"
@@ -63,6 +66,7 @@ const mainNav = () => {
       >
         <Nav.Link href="/about">about</Nav.Link>
       </Nav.Item>
+
       <Nav.Item
         className={
           router.route === "/contact"
