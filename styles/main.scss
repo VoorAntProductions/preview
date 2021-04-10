@@ -168,6 +168,7 @@ li:hover,
 ul:hover,
 video:hover,
 iframe:hover,
+.nav-item-p-25:hover,
 .fslightbox-slide-btn:hover,
 .fslightbox-toolbar-button:hover,
 .fslightbox-slide-btn-container:hover,
@@ -175,6 +176,10 @@ iframe:hover,
 .overlay:hover,
 img:hover {
   cursor: url("/assets/icons/cursor/test-hover.png"), auto;
+}
+
+.nav-item-p-25:hover {
+  color: $secondary;
 }
 
 .clients:hover {
@@ -251,7 +256,7 @@ video,
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 39px 0;
+  padding: 15px 0;
   margin-bottom: 39px;
   width: 100%;
   top: 0;
@@ -494,8 +499,8 @@ footer {
   backdrop-filter: blur(10px);
 }
 .detail-head-image {
-  width: 926px;
-  height: 670px;
+  // width: 926px;
+  // height: 670px;
   object-fit: cover;
   @include media-breakpoint-down(lg) {
     width: 670px;
@@ -1136,9 +1141,9 @@ footer {
 }
 
 .nav-link {
-  padding: 0.5rem 1rem;
+  padding: 25px 0.5rem 0.5rem 0.5rem;
   @include media-breakpoint-down(lg) {
-    padding: 0.5rem 0.5rem;
+    padding: 25px 0.5rem 0.5rem 0.5rem;
   }
 }
 
