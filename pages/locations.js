@@ -138,7 +138,7 @@ export default function Locations({ images }) {
         </div>
       </div>
       <div className="container-mine">
-        <div className="grid pt-50">
+        <div className="grid">
           <div className="grid__item medium--one-half large--one-third m-t40 image-margin-top">
             {imageResults1.length > 0 &&
               imageResults1.map((el, key) => (

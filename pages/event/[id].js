@@ -11,9 +11,22 @@ import moment from "moment";
 const Event = ({ event, events }) => {
   const router = useRouter();
   const galleryArray = [];
+  const imagesArray = [];
+  const videosArray = [];
   const eventsArrayIds = [];
   let quantityVideos = 0;
-  const [toggler, setToggler] = useState(false);
+  const [lightboxController, setLightboxController] = useState({
+    toggler: false,
+    slide: 1
+  });
+  const [lightboxControllerImage, setLightboxControllerImage] = useState({
+    toggler: false,
+    slide: 1
+  });
+  const [lightboxControllerVideos, setLightboxControllerVideos] = useState({
+    toggler: false,
+    slide: 1
+  });
 
   let previousId;
   let nextId;
@@ -45,14 +58,36 @@ const Event = ({ event, events }) => {
 
     if (event.HeadImage) {
       galleryArray.push(event.HeadImage.url);
+      imagesArray.push(event.HeadImage.url);
     }
+
+    if (event.Gallery) {
+      event.Gallery.map(image => {
+        const url = image.url;
+        if (image.provider_metadata) {
+          galleryArray.push(url);
+          imagesArray.push(url);
+        }
+      });
+    }
+
     if (event.VimeoVideoIDSeparateWithComma) {
       const array = event.VimeoVideoIDSeparateWithComma.split(", ");
       quantityVideos = array.length;
       array.map(item => {
         galleryArray.push(
           <iframe
-            src={`https://player.vimeo.com/video/${item}?api=1;`}
+            src={`https://player.vimeo.com/video/${item}?api=1&autoplay=1&autopause=1;`}
+            width="1920px"
+            height="1080px"
+            frameBorder="0"
+            allow="autoplay; fullscreen"
+            allowFullScreen
+          />
+        );
+        videosArray.push(
+          <iframe
+            src={`https://player.vimeo.com/video/${item}?api=1&autoplay=1&autopause=1;`}
             width="1920px"
             height="1080px"
             frameBorder="0"
@@ -62,15 +97,6 @@ const Event = ({ event, events }) => {
         );
       });
     }
-    if (event.Gallery) {
-      event.Gallery.map(image => {
-        const url = image.url;
-        if (image.provider_metadata) {
-          galleryArray.push(url);
-        }
-      });
-    }
-
     return (
       <Layout pageTitle={event.Title} description={event.Description}>
         {previousId && (
@@ -111,7 +137,15 @@ const Event = ({ event, events }) => {
               <div className="head_image">
                 <div className="head_image_overlays">
                   {quantityVideos > 0 && (
-                    <div className="align-center gallery-block">
+                    <div
+                      className="align-center gallery-block"
+                      onClick={() =>
+                        setLightboxControllerVideos({
+                          toggler: !lightboxControllerVideos.toggler,
+                          slide: 1
+                        })
+                      }
+                    >
                       <img
                         src="../assets/icons/video.svg"
                         width="25"
@@ -122,7 +156,15 @@ const Event = ({ event, events }) => {
                     </div>
                   )}
                   {event.Gallery && event.Gallery.length > 0 && (
-                    <div className="align-center gallery-block">
+                    <div
+                      className="align-center gallery-block"
+                      onClick={() =>
+                        setLightboxControllerImage({
+                          toggler: !lightboxControllerImage.toggler,
+                          slide: 1
+                        })
+                      }
+                    >
                       <img
                         src="../assets/icons/gallery.svg"
                         alt="No image found"
@@ -142,7 +184,12 @@ const Event = ({ event, events }) => {
                     publicId={event.HeadImage.provider_metadata.public_id}
                     loading="lazy"
                     alt={event.HeadImage.url}
-                    onClick={() => setToggler(!toggler)}
+                    onClick={() =>
+                      setLightboxController({
+                        toggler: !lightboxController.toggler,
+                        slide: 1
+                      })
+                    }
                     className="video detail-head-image"
                   >
                     <Transformation
@@ -177,20 +224,24 @@ const Event = ({ event, events }) => {
               <ReactMarkdown source={event.Description} />
             </div>
           </div>
-
-          {/* <div className="w-25">
-            <h2>{event.Title}</h2>
-            <p className="m-t30">
-              {event.Client}
-              <br></br>
-              {event.Location}
-              <br></br>
-              {event.Date && moment(event.Date).format("MMMM YYYY")}
-            </p>
-            <ReactMarkdown source={event.Description} />
-          </div> */}
         </div>
-        <FsLightbox toggler={toggler} sources={galleryArray} />
+        <FsLightbox
+          toggler={lightboxController.toggler}
+          slide={lightboxController.slide}
+          sources={galleryArray}
+          loadOnlyCurrentSource={true}
+        />
+        <FsLightbox
+          toggler={lightboxControllerImage.toggler}
+          slide={lightboxControllerImage.slide}
+          sources={imagesArray}
+        />
+        <FsLightbox
+          toggler={lightboxControllerVideos.toggler}
+          slide={lightboxControllerVideos.slide}
+          sources={videosArray}
+          loadOnlyCurrentSource={true}
+        />
       </Layout>
     );
   }

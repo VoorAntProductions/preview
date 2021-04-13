@@ -11,9 +11,22 @@ import moment from "moment";
 const Production = ({ production, productions }) => {
   const router = useRouter();
   const galleryArray = [];
+  const imagesArray = [];
+  const videosArray = [];
   let quantityVideos = 0;
   const productionsArrayIds = [];
-  const [toggler, setToggler] = useState(false);
+  const [lightboxController, setLightboxController] = useState({
+    toggler: false,
+    slide: 1
+  });
+  const [lightboxControllerImage, setLightboxControllerImage] = useState({
+    toggler: false,
+    slide: 1
+  });
+  const [lightboxControllerVideos, setLightboxControllerVideos] = useState({
+    toggler: false,
+    slide: 1
+  });
 
   let previousId;
   let nextId;
@@ -45,14 +58,26 @@ const Production = ({ production, productions }) => {
 
     if (production.HeadImage) {
       galleryArray.push(production.HeadImage.url);
+      imagesArray.push(production.HeadImage.url);
     }
+
+    if (production.Gallery) {
+      production.Gallery.map(image => {
+        const url = image.url;
+        if (image.provider_metadata) {
+          galleryArray.push(url);
+          imagesArray.push(url);
+        }
+      });
+    }
+
     if (production.VimeoVideoIDsSeparateWithComma) {
       const array = production.VimeoVideoIDsSeparateWithComma.split(", ");
       quantityVideos = array.length;
       array.map(item => {
         galleryArray.push(
           <iframe
-            src={`https://player.vimeo.com/video/${item}?api=1&autoplay=1;`}
+            src={`https://player.vimeo.com/video/${item}?api=1&autoplay=1&autopause=1;`}
             width="1920px"
             height="1080px"
             frameBorder="0"
@@ -60,14 +85,16 @@ const Production = ({ production, productions }) => {
             allowFullScreen
           />
         );
-      });
-    }
-    if (production.Gallery) {
-      production.Gallery.map(image => {
-        const url = image.url;
-        if (image.provider_metadata) {
-          galleryArray.push(url);
-        }
+        videosArray.push(
+          <iframe
+            src={`https://player.vimeo.com/video/${item}?api=1&autoplay=1&autopause=1;`}
+            width="1920px"
+            height="1080px"
+            frameBorder="0"
+            allow="autoplay; fullscreen"
+            allowFullScreen
+          />
+        );
       });
     }
     return (
@@ -110,7 +137,15 @@ const Production = ({ production, productions }) => {
               <div className="head_image">
                 <div className="head_image_overlays">
                   {quantityVideos > 0 && (
-                    <div className="align-center gallery-block">
+                    <div
+                      className="align-center gallery-block"
+                      onClick={() =>
+                        setLightboxControllerVideos({
+                          toggler: !lightboxControllerVideos.toggler,
+                          slide: 1
+                        })
+                      }
+                    >
                       <img
                         src="../assets/icons/video.svg"
                         width="25"
@@ -121,7 +156,15 @@ const Production = ({ production, productions }) => {
                     </div>
                   )}
                   {production.Gallery && production.Gallery.length > 0 && (
-                    <div className="align-center gallery-block">
+                    <div
+                      className="align-center gallery-block"
+                      onClick={() =>
+                        setLightboxControllerImage({
+                          toggler: !lightboxControllerImage.toggler,
+                          slide: 1
+                        })
+                      }
+                    >
                       <img
                         src="../assets/icons/gallery.svg"
                         alt="No image found"
@@ -142,7 +185,12 @@ const Production = ({ production, productions }) => {
                     publicId={production.HeadImage.provider_metadata.public_id}
                     loading="lazy"
                     alt={production.HeadImage.url}
-                    onClick={() => setToggler(!toggler)}
+                    onClick={() =>
+                      setLightboxController({
+                        toggler: !lightboxController.toggler,
+                        slide: 1
+                      })
+                    }
                     className="video detail-head-image"
                   >
                     <Transformation
@@ -177,22 +225,21 @@ const Production = ({ production, productions }) => {
               <ReactMarkdown source={production.Description} />
             </div>
           </div>
-
-          {/* <div className="w-25">
-            <h2>{production.Title}</h2>
-            <p className="m-t30">
-              {production.Client}
-              <br></br>
-              {production.Location}
-              <br></br>
-              {production.Date && moment(production.Date).format("MMMM YYYY")}
-            </p>
-            <ReactMarkdown source={production.Description} />
-          </div> */}
         </div>
         <FsLightbox
-          toggler={toggler}
+          toggler={lightboxController.toggler}
+          slide={lightboxController.slide}
           sources={galleryArray}
+          loadOnlyCurrentSource={true}
+        />
+        <FsLightbox
+          toggler={lightboxControllerImage.toggler}
+          slide={lightboxControllerImage.slide}
+          sources={imagesArray}
+        />
+        <FsLightbox
+          toggler={lightboxControllerVideos.toggler}
+          sources={videosArray}
           loadOnlyCurrentSource={true}
         />
       </Layout>
