@@ -7,40 +7,53 @@ const mobileNav = ({ open }) => {
   const router = useRouter();
 
   return (
-    <div className="container pt-2rem mobile-nav">
-      <a href="/">
+    <div className="mobile-nav-fixed">
+      <div className="mobile-nav-logo">
+        <a href="/">
+          <img
+            src="/assets/logo-w.png"
+            alt="Logo of Ant Productions in white"
+            width="200"
+            className="mobile-logo"
+          />
+        </a>
+      </div>
+      <div className="mobile-nav-trigger">
         <img
-          src="/assets/logo-w.svg"
-          alt="Logo of Ant Productions in white"
-          width="220"
-          className="mobile-logo"
+          src="/assets/icons/menu.svg"
+          width="30"
+          alt=""
+          className="modal-open"
+          onClick={() => setShow(true)}
         />
-      </a>
-      <img
-        src="/assets/icons/menu.svg"
-        width="30"
-        alt=""
-        className="modal-open"
-        onClick={() => setShow(true)}
-      />
+      </div>
 
       {show && (
         <div className="fullscreen">
-          <Nav className="flex-column">
-            <Nav.Item className="flex">
-              <Nav.Link href="/">
-                <img
-                  src="/assets/logo-w.svg"
-                  alt="Logo of Ant Productions in white"
-                  width="220"
-                />
-              </Nav.Link>
+          <div className="mobile-nav-open-logo">
+            <a href="/">
               <img
-                src="/assets/icons/cancel.svg"
-                width="20"
-                onClick={() => setShow(false)}
-                className="modal-close"
+                src="/assets/logo-w.png"
+                alt="Logo of Ant Productions in white"
+                width="200"
+                className="mobile-logo"
               />
+            </a>
+          </div>
+          <div className="mobile-nav-trigger">
+            <img
+              src="/assets/icons/cancel.svg"
+              width="20"
+              alt=""
+              className="modal-open"
+              onClick={() => setShow(false)}
+            />
+          </div>
+          <Nav className="flex-column">
+            <Nav.Item className="nav-link-title">
+              <Nav.Link href="" className="accent">
+                Menu
+              </Nav.Link>
             </Nav.Item>
             <Nav.Item
               className={

@@ -127,7 +127,10 @@ const Event = ({ event, events }) => {
               <li className="breadcrumb-item active">
                 <a href="/events">EVENTS</a>
               </li>
-              <li className="breadcrumb-item non-active" aria-current="page">
+              <li
+                className="breadcrumb-item non-active breadcrumb-title"
+                aria-current="page"
+              >
                 {event.Title}
               </li>
             </ol>

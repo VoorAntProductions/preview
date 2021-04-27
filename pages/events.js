@@ -3,6 +3,7 @@ import Swiperslider from "../components/swiperslider";
 import { getEvents } from "../lib/api";
 import React from "react";
 import { withRouter } from "next/router";
+import GalleryMobile from "../components/galleryMobile";
 
 function Events({ events }) {
   return (
@@ -13,7 +14,12 @@ function Events({ events }) {
       <div className="container">
         <h2 className="m-b40 show-mobile">events</h2>
       </div>
-      <Swiperslider items={events} url="event" />
+      <div className="show-desktop">
+        <Swiperslider items={events} url="event" />
+      </div>
+      <div className="show-mobile">
+        <GalleryMobile items={events} url="event" />
+      </div>
     </Layout>
   );
 }

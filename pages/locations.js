@@ -1,13 +1,19 @@
 import Layout from "../components/layout";
 import { getImages } from "../lib/api";
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Image, Transformation, Placeholder } from "cloudinary-react";
 import FsLightbox from "fslightbox-react";
+import Gallery from "react-photo-gallery";
+import Carousel, { Modal, ModalGateway } from "react-images";
 
 export default function Locations({ images }) {
   const items = images; //… your array, filled with values
 
   const n = 3;
+
+  const mobileImages = [];
+  const mobileImagesLightbox = [];
+
   const result = [[], [], []]; //we create it, then we'll fill it
   const imageResults1 = [];
   const imageResults2 = [];
@@ -30,6 +36,16 @@ export default function Locations({ images }) {
       result[line].push(value);
     }
   }
+
+  items.forEach(i => {
+    mobileImages.push({
+      publicId: i.Gallery[0].formats.small.provider_metadata.public_id,
+      src: i.Gallery[0].formats.small.url,
+      width: i.Gallery[0].formats.small.width,
+      height: i.Gallery[0].formats.small.height
+    });
+    mobileImagesLightbox.push(i.Gallery[0].url);
+  });
 
   result[0].forEach(r => {
     imageResults1.push({
@@ -58,6 +74,7 @@ export default function Locations({ images }) {
     });
     imageResultsLightbox3.push(r.Gallery[0].url);
   });
+
   if (
     imageResultsLightbox1.length === result[0].length &&
     imageResultsLightbox2.length === result[1].length &&
@@ -116,6 +133,19 @@ export default function Locations({ images }) {
     });
   }
 
+  const [lightboxControllerMobile, setLightboxControllerMobile] = useState({
+    toggler: false,
+    slide: 1
+  });
+
+  function openLightboxOnMobile(number) {
+    const indexVideo = number + 1;
+    setLightboxControllerMobile({
+      toggler: !lightboxControllerMobile.toggler,
+      slide: indexVideo
+    });
+  }
+
   return (
     <Layout
       pageTitle="Ant Productions Locations"
@@ -137,102 +167,135 @@ export default function Locations({ images }) {
           </div>
         </div>
       </div>
-      <div className="container-mine">
-        <div className="grid">
-          <div className="grid__item medium--one-half large--one-third m-t40 image-margin-top">
-            {imageResults1.length > 0 &&
-              imageResults1.map((el, key) => (
-                <div key={key}>
-                  <Image
-                    cloudName="dx8wgl3t3"
-                    publicId={el.publicId}
-                    loading="lazy"
-                    alt={el.url}
-                    onClick={() => openLightboxOnSlide(key)}
-                    // height="auto"
-                    // width={430}
-                    className="locations-image"
-                  >
-                    <Transformation crop="fill" width="430" />
-                    <Transformation
-                      quality="auto"
-                      fetchFormat="auto"
-                      flag="lossy"
-                      format="jpg"
-                    />
-                    <Placeholder type="pixelate" />
-                  </Image>
-                </div>
-              ))}
+      <div className="show-desktop">
+        <div className="container-mine">
+          <div className="grid">
+            <div className="grid__item medium--one-half large--one-third m-t40 image-margin-top">
+              {imageResults1.length > 0 &&
+                imageResults1.map((el, key) => (
+                  <div key={key}>
+                    <Image
+                      cloudName="dx8wgl3t3"
+                      publicId={el.publicId}
+                      loading="lazy"
+                      alt={el.url}
+                      onClick={() => openLightboxOnSlide(key)}
+                      // height="auto"
+                      // width={430}
+                      className="locations-image"
+                    >
+                      <Transformation crop="fill" width="430" />
+                      <Transformation
+                        quality="auto"
+                        fetchFormat="auto"
+                        flag="lossy"
+                        format="jpg"
+                      />
+                      <Placeholder type="pixelate" />
+                    </Image>
+                  </div>
+                ))}
+            </div>
+            <div className="grid__item medium--one-half large--one-third m-t90-medium image-margin-top">
+              {imageResults2.length > 0 &&
+                imageResults2.map((el, key) => (
+                  <div key={key}>
+                    <Image
+                      cloudName="dx8wgl3t3"
+                      publicId={el.publicId}
+                      loading="lazy"
+                      alt={el.url}
+                      onClick={() => openLightboxOnSlide2(key)}
+                      // height="auto"
+                      // width={430}
+                      className="locations-image"
+                    >
+                      <Transformation crop="fill" width="430" />
+                      <Transformation
+                        quality="auto"
+                        fetchFormat="auto"
+                        flag="lossy"
+                        format="jpg"
+                      />
+                      <Placeholder type="pixelate" />
+                    </Image>
+                  </div>
+                ))}
+            </div>
+            <div className="grid__item medium--one-half large--one-third image-margin-top">
+              {imageResults3.length > 0 &&
+                imageResults3.map((el, key) => (
+                  <div key={key}>
+                    <Image
+                      cloudName="dx8wgl3t3"
+                      publicId={el.publicId}
+                      loading="lazy"
+                      alt={el.url}
+                      onClick={() => openLightboxOnSlide3(key)}
+                      // height="auto"
+                      // width={430}
+                      className="locations-image"
+                    >
+                      <Transformation crop="fill" width="430" />
+                      <Transformation
+                        quality="auto"
+                        fetchFormat="auto"
+                        flag="lossy"
+                        format="jpg"
+                      />
+                      <Placeholder type="pixelate" />
+                    </Image>
+                  </div>
+                ))}
+            </div>
+            <FsLightbox
+              toggler={lightboxController.toggler}
+              sources={newimageResultsLightbox1}
+              slide={lightboxController.slide}
+            />
+            <FsLightbox
+              toggler={lightboxController2.toggler}
+              sources={newimageResultsLightbox2}
+              slide={lightboxController2.slide}
+            />
+            <FsLightbox
+              toggler={lightboxController3.toggler}
+              sources={newimageResultsLightbox3}
+              slide={lightboxController3.slide}
+            />
           </div>
-          <div className="grid__item medium--one-half large--one-third m-t90-medium image-margin-top">
-            {imageResults2.length > 0 &&
-              imageResults2.map((el, key) => (
-                <div key={key}>
-                  <Image
-                    cloudName="dx8wgl3t3"
-                    publicId={el.publicId}
-                    loading="lazy"
-                    alt={el.url}
-                    onClick={() => openLightboxOnSlide2(key)}
-                    // height="auto"
-                    // width={430}
-                    className="locations-image"
-                  >
-                    <Transformation crop="fill" width="430" />
-                    <Transformation
-                      quality="auto"
-                      fetchFormat="auto"
-                      flag="lossy"
-                      format="jpg"
-                    />
-                    <Placeholder type="pixelate" />
-                  </Image>
-                </div>
-              ))}
-          </div>
-          <div className="grid__item medium--one-half large--one-third image-margin-top">
-            {imageResults3.length > 0 &&
-              imageResults3.map((el, key) => (
-                <div key={key}>
-                  <Image
-                    cloudName="dx8wgl3t3"
-                    publicId={el.publicId}
-                    loading="lazy"
-                    alt={el.url}
-                    onClick={() => openLightboxOnSlide3(key)}
-                    // height="auto"
-                    // width={430}
-                    className="locations-image"
-                  >
-                    <Transformation crop="fill" width="430" />
-                    <Transformation
-                      quality="auto"
-                      fetchFormat="auto"
-                      flag="lossy"
-                      format="jpg"
-                    />
-                    <Placeholder type="pixelate" />
-                  </Image>
-                </div>
-              ))}
-          </div>
-          <FsLightbox
-            toggler={lightboxController.toggler}
-            sources={newimageResultsLightbox1}
-            slide={lightboxController.slide}
-          />
-          <FsLightbox
-            toggler={lightboxController2.toggler}
-            sources={newimageResultsLightbox2}
-            slide={lightboxController2.slide}
-          />
-          <FsLightbox
-            toggler={lightboxController3.toggler}
-            sources={newimageResultsLightbox3}
-            slide={lightboxController3.slide}
-          />
         </div>
+      </div>
+      <div className="show-mobile">
+        <div className="grid">
+          {mobileImages.length > 0 &&
+            mobileImages.map((el, key) => (
+              <div key={key} className="grid__item one-whole">
+                <Image
+                  cloudName="dx8wgl3t3"
+                  publicId={el.publicId}
+                  loading="lazy"
+                  alt={el.url}
+                  onClick={() => openLightboxOnMobile(key)}
+                  className="locations-image mb-15"
+                >
+                  <Transformation crop="fill" width="430" />
+                  <Transformation
+                    quality="auto"
+                    fetchFormat="auto"
+                    flag="lossy"
+                    format="jpg"
+                  />
+                  <Placeholder type="pixelate" />
+                </Image>
+              </div>
+            ))}
+        </div>
+        <FsLightbox
+          toggler={lightboxControllerMobile.toggler}
+          sources={mobileImagesLightbox}
+          slide={lightboxControllerMobile.slide}
+        />
       </div>
     </Layout>
   );

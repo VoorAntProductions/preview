@@ -95,9 +95,17 @@ export default function Home() {
           .bar {
             cursor: url("/assets/icons/cursor/cursor-hover.svg"), auto;
           }
+          .mobile-nav-fixed {
+            background: transparent;
+          }
         `}</style>
-
-        <video autoPlay muted={isMuted} loop className="test">
+        <video autoPlay muted playsInline loop className="test bla">
+          <source src="assets/tre.mp4" type="video/mp4" />
+          <source src="assets/tre.ogg" type="video/ogg" />
+          <source src="assets/tre.webm" type="video/webm" />
+          Your browser does not support HTML video.
+        </video>
+        <video autoPlay muted={isMuted} playsInline loop className="test">
           <source src="assets/tre.mp4" type="video/mp4" />
           <source src="assets/tre.ogg" type="video/ogg" />
           <source src="assets/tre.webm" type="video/webm" />

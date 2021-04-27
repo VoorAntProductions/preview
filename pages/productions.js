@@ -3,6 +3,7 @@ import Swiperslider from "../components/swiperslider";
 import { getProductions } from "../lib/api";
 import React from "react";
 import { withRouter } from "next/router";
+import GalleryMobile from "../components/galleryMobile";
 
 function Productions({ productions }) {
   return (
@@ -13,7 +14,12 @@ function Productions({ productions }) {
       <div className="container">
         <h2 className="m-b40 show-mobile">productions</h2>
       </div>
-      <Swiperslider items={productions} url="production" />
+      <div className="show-desktop">
+        <Swiperslider items={productions} url="production" />
+      </div>
+      <div className="show-mobile">
+        <GalleryMobile items={productions} url="production" />
+      </div>
     </Layout>
   );
 }

@@ -66,7 +66,14 @@ export default function MotorcycleDiaries({
         <div className="grid m-b40">
           <div className="grid__item large--two-thirds d-flex rm-padding">
             <div className="align-column-center p-relative">
-              <video className="video-motorcycle-screen" autoPlay controls loop>
+              <video
+                className="video-motorcycle-screen"
+                autoPlay
+                playsInline
+                controls
+                muted
+                loop
+              >
                 <source src="assets/screencap.mov" type="video/mov" />
                 <source src="assets/screencap.mp4" type="video/mp4" />
                 <source src="assets/screencap.webm" type="video/webm" />
@@ -92,57 +99,82 @@ export default function MotorcycleDiaries({
         </div>
       </div>
       <div className="video-gallery m-b40">
-        <Swiper
-          spaceBetween={5}
-          slidesPerView={5}
-          speed={500}
-          mousewheel={true}
-          scrollbar={{
-            el: ".swiper-scrollbar",
-            draggable: true
-          }}
-          breakpoints={{
-            1440: {
-              slidesPerView: 5,
-              spaceBetween: 5
-            },
-            1024: {
-              slidesPerView: 4,
-              spaceBetween: 4
-            },
-            768: {
-              slidesPerView: 3,
-              spaceBetween: 3
-            },
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 2
-            },
-            320: {
-              slidesPerView: 2,
-              spaceBetween: 1
-            }
-          }}
-        >
-          {motorcycleDiariesVideos.length > 0 &&
-            motorcycleDiariesVideos.map((m, i) => (
-              <SwiperSlide key={i} className="overlay-cont">
-                <div
-                  onClick={() => openLightboxOnSlide(i)}
-                  className="overlay"
-                  data-class="fslightbox-source test"
-                  data-fslightbox="lightbox"
-                ></div>
-                <iframe
-                  src={`https://player.vimeo.com/video/${m.VimeoNumber}`}
-                  frameBorder="0"
-                  allowFullScreen
-                  className="vimeo"
-                ></iframe>
-              </SwiperSlide>
-            ))}
-          <div className="swiper-scrollbar"></div>
-        </Swiper>
+        <div className="show-desktop">
+          <Swiper
+            spaceBetween={5}
+            slidesPerView={5}
+            speed={500}
+            mousewheel={true}
+            scrollbar={{
+              el: ".swiper-scrollbar",
+              draggable: true
+            }}
+            breakpoints={{
+              1440: {
+                slidesPerView: 5,
+                spaceBetween: 5
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 4
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 3
+              },
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 2
+              },
+              320: {
+                slidesPerView: 2,
+                spaceBetween: 1
+              }
+            }}
+          >
+            {motorcycleDiariesVideos.length > 0 &&
+              motorcycleDiariesVideos.map((m, i) => (
+                <SwiperSlide key={i} className="overlay-cont">
+                  <div
+                    onClick={() => openLightboxOnSlide(i)}
+                    className="overlay"
+                    data-class="fslightbox-source test"
+                    data-fslightbox="lightbox"
+                  ></div>
+                  <iframe
+                    src={`https://player.vimeo.com/video/${m.VimeoNumber}`}
+                    frameBorder="0"
+                    allowFullScreen
+                    className="vimeo"
+                  ></iframe>
+                </SwiperSlide>
+              ))}
+            <div className="swiper-scrollbar"></div>
+          </Swiper>
+        </div>
+        <div className="show-mobile">
+          <div className="container-mine">
+            <div className="grid">
+              {motorcycleDiariesVideos.length > 0 &&
+                motorcycleDiariesVideos.map((m, i) => (
+                  <div key={i} className="grid__item one-whole">
+                    <div
+                      onClick={() => openLightboxOnSlide(i)}
+                      className="overlay"
+                      data-class="fslightbox-source test"
+                      data-fslightbox="lightbox"
+                    ></div>
+                    <iframe
+                      src={`https://player.vimeo.com/video/${m.VimeoNumber}`}
+                      frameBorder="0"
+                      allowFullScreen
+                      className="vimeo"
+                    ></iframe>
+                  </div>
+                ))}
+            </div>
+          </div>
+        </div>
       </div>
       <FsLightbox
         toggler={lightboxController.toggler}

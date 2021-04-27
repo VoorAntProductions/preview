@@ -127,7 +127,10 @@ const Production = ({ production, productions }) => {
               <li className="breadcrumb-item active">
                 <a href="/productions">PRODUCTIONS</a>
               </li>
-              <li className="breadcrumb-item non-active" aria-current="page">
+              <li
+                className="breadcrumb-item non-active breadcrumb-title"
+                aria-current="page"
+              >
                 {production.Title}
               </li>
             </ol>
