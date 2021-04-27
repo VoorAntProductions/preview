@@ -599,6 +599,11 @@ footer {
 .m-auto {
   margin: auto;
 }
+
+.mlr-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
 .m-t5 {
   margin-top: 5px;
 }
@@ -1361,9 +1366,11 @@ footer {
   }
   @include media-breakpoint-down(md) {
     width: 664px;
+    margin-left: 0px;
   }
   @include media-breakpoint-down(sm) {
-    width: 270px;
+    width: 100vw;
+    margin-left: -60px;
   }
 }
 
@@ -1431,4 +1438,8 @@ footer {
   @include media-breakpoint-down(md) {
     display: inline;
   }
+}
+
+.about-video-mobile {
+  width: 100vw;
 }
