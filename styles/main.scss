@@ -48,6 +48,7 @@ a {
 }
 
 .swiper-container-xx {
+  padding-top: 50px;
   .swiper-container {
     height: 75vh;
     margin-left: 0px;
@@ -220,7 +221,7 @@ video,
 }
 
 .video-gallery {
-  overflow: scroll;
+  // overflow: scroll;
   display: flex;
   flex-direction: row;
 
