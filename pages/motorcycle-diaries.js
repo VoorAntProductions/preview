@@ -62,30 +62,56 @@ export default function MotorcycleDiaries({
       pageTitle="Ant Productions Motorcycle Diaries"
       description="A page that explains another company from Ant Productions"
     >
+      <div className="show-mobile">
+        <video
+          className="video-motorcycle-screen"
+          autoPlay
+          playsInline
+          controls
+          muted
+          loop
+        >
+          <source src="assets/screencap.mov" type="video/mov" />
+          <source src="assets/screencap.mp4" type="video/mp4" />
+          <source src="assets/screencap.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="m-tn25 d-flex justify-center">
+          <a
+            href={motorcycleDiariesInfo.websiteLink}
+            target="_blank"
+            className="button"
+          >
+            view website
+          </a>
+        </div>
+      </div>
       <div className="container-mine">
         <div className="grid m-b40">
           <div className="grid__item large--two-thirds d-flex rm-padding">
             <div className="align-column-center p-relative">
-              <video
-                className="video-motorcycle-screen"
-                autoPlay
-                playsInline
-                controls
-                muted
-                loop
-              >
-                <source src="assets/screencap.mov" type="video/mov" />
-                <source src="assets/screencap.mp4" type="video/mp4" />
-                <source src="assets/screencap.webm" type="video/webm" />
-                Your browser does not support the video tag.
-              </video>
-              <a
-                href={motorcycleDiariesInfo.websiteLink}
-                target="_blank"
-                className="button m-tn25"
-              >
-                view website
-              </a>
+              <div className="show-desktop">
+                <video
+                  className="video-motorcycle-screen"
+                  autoPlay
+                  playsInline
+                  controls
+                  muted
+                  loop
+                >
+                  <source src="assets/screencap.mov" type="video/mov" />
+                  <source src="assets/screencap.mp4" type="video/mp4" />
+                  <source src="assets/screencap.webm" type="video/webm" />
+                  Your browser does not support the video tag.
+                </video>
+                <a
+                  href={motorcycleDiariesInfo.websiteLink}
+                  target="_blank"
+                  className="button m-tn25"
+                >
+                  view website
+                </a>
+              </div>
             </div>
           </div>
           <div className="grid__item grid__item-special large--one-third">

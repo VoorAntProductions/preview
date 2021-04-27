@@ -27,35 +27,21 @@ export default function About({ aboutInfo }) {
             <ReactMarkdown source={aboutInfo.Description} />
           </div>
           <div className="grid__item large--two-thirds m-b40">
-            <div className="show-desktop">
-              <video
-                autoPlay
-                playsInline
-                controls
-                width="872"
-                className="about-video"
-              >
-                <source src="assets/about.mp4" type="video/mp4" />
-                <source src="assets/about.webm" type="video/webm" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <div className="show-mobile">
-              <video
-                autoPlay
-                playsInline
-                muted
-                controls
-                width="872"
-                className="about-video"
-              >
-                <source src="assets/about.mp4" type="video/mp4" />
-                <source src="assets/about.webm" type="video/webm" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
+            <video
+              autoPlay
+              playsInline
+              controls
+              width="872"
+              className="about-video"
+            >
+              <source src="assets/about.mp4" type="video/mp4" />
+              <source src="assets/about.webm" type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
+      </div>
+      <div className="container-mine">
         <div className="dflex-j-center m-40-0">
           <h3>Our clients</h3>
         </div>
