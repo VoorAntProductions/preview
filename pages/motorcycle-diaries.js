@@ -90,7 +90,7 @@ export default function MotorcycleDiaries({
         <div className="grid m-b40">
           <div className="grid__item large--two-thirds d-flex rm-padding">
             <div className="align-column-center p-relative">
-              <div className="show-desktop">
+              <div className="show-desktop-flex">
                 <video
                   className="video-motorcycle-screen"
                   autoPlay
