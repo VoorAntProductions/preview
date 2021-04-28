@@ -23,7 +23,7 @@ const GalleryMobile = ({ items, url }) => {
                   />
                 </div>
 
-                <div className="text-center text-max-width m-auto">
+                <div className="text-center text-max-width m-auto mtn-45">
                   <p className="bold small text-shadow">{element.Title}</p>
                   <p className="small">{element.Client}</p>
                 </div>

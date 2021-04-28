@@ -50,11 +50,11 @@ const mobileNav = ({ open }) => {
             />
           </div>
           <Nav className="flex-column">
-            <Nav.Item className="nav-link-title">
+            {/* <Nav.Item className="nav-link-title">
               <Nav.Link href="" className="accent">
                 Menu
               </Nav.Link>
-            </Nav.Item>
+            </Nav.Item> */}
             <Nav.Item
               className={
                 router.route === "/events" || router.route === "/events/[id]"

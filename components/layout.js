@@ -13,7 +13,7 @@ const handleMouseMove = e => {
   inputEl.current.style.left = `${Xtest}px`;
 };
 
-const Layout = ({ children, pageTitle, description }) => (
+const Layout = ({ children, pageTitle, description, pageClass }) => (
   <>
     <Head>
       <title>{pageTitle}</title>
@@ -25,7 +25,7 @@ const Layout = ({ children, pageTitle, description }) => (
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
       />
     </Head>
-    <div onMouseMove={handleMouseMove}>
+    <div onMouseMove={handleMouseMove} className={pageClass}>
       <div className="cursorTrailing" ref={inputEl} />
       <Nav />
       <MobileNav />
