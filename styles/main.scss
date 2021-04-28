@@ -338,6 +338,14 @@ video,
   }
 }
 
+.home {
+  .main-content {
+    @include media-breakpoint-down(md) {
+      min-height: 55vh;
+    }
+  }
+}
+
 .home-buttons {
   display: block;
   @include media-breakpoint-down(sm) {
@@ -803,6 +811,13 @@ footer {
     height: 70vh;
     justify-content: center;
   }
+
+  @include media-breakpoint-down(md) {
+    margin-right: 0px;
+    height: 100%;
+    justify-content: center;
+    margin-top: 290px;
+  }
 }
 
 .test {
@@ -823,31 +838,31 @@ footer {
 
   @include media-breakpoint-down(md) {
     object-fit: contain;
-    top: auto;
-    bottom: 0;
+    top: 0;
+    bottom: auto;
     height: auto;
   }
 }
 
-.bla {
-  top: 0;
-  bottom: auto;
-  display: inline;
+// .bla {
+//   top: 0;
+//   bottom: auto;
+//   display: inline;
 
-  @include media-breakpoint-up(md) {
-    display: none;
-  }
-}
+//   @include media-breakpoint-up(md) {
+//     display: none;
+//   }
+// }
 
-.blu {
-  top: 33.6%;
-  bottom: auto;
-  display: inline;
+// .blu {
+//   top: 33.6%;
+//   bottom: auto;
+//   display: inline;
 
-  @include media-breakpoint-up(md) {
-    display: none;
-  }
-}
+//   @include media-breakpoint-up(md) {
+//     display: none;
+//   }
+// }
 
 .btn-1 {
   padding: 14px 73px;
@@ -1451,4 +1466,18 @@ footer {
 
 .about-video-mobile {
   width: 100vw;
+}
+
+.mtn-45 {
+  margin-top: -45px !important;
+}
+
+.home {
+  .copywright-text {
+    @include media-breakpoint-down(md) {
+      position: absolute;
+      right: 15px;
+      bottom: 0;
+    }
+  }
 }
