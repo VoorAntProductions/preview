@@ -78,6 +78,7 @@ export default function Home() {
       <Layout
         pageTitle="Ant Productions"
         description="Ant Productions home page"
+        pageClass="home"
       >
         <style jsx global>{`
           body {
@@ -99,12 +100,13 @@ export default function Home() {
             background: transparent;
           }
         `}</style>
-        <video autoPlay muted playsInline loop className="test bla">
+        {/* <video autoPlay muted playsInline loop className="test bla">
           <source src="assets/tre.mp4" type="video/mp4" />
           <source src="assets/tre.ogg" type="video/ogg" />
           <source src="assets/tre.webm" type="video/webm" />
           Your browser does not support HTML video.
-        </video>
+        </video> */}
+
         <video autoPlay muted={isMuted} playsInline loop className="test">
           <source src="assets/tre.mp4" type="video/mp4" />
           <source src="assets/tre.ogg" type="video/ogg" />
@@ -130,7 +132,9 @@ export default function Home() {
           <MusicBar muted={isMuted} id="equalizer" />
         </div>
       </Layout>
-      <Footer />
+      <div className="home">
+        <Footer />
+      </div>
     </>
   );
 }
