@@ -5,15 +5,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "export": "npm run build && next export -o _static"
+    "start": "next start -H 0.0.0.0 -p ${PORT:-8080}",
+    "export": "next build && next export"
   },
   "dependencies": {
     "bootstrap": "^4.5.3",
     "cloudinary-react": "^1.6.8",
     "gsap": "^3.6.0",
     "moment": "^2.29.1",
-    "next": "10.0.4",
+    "next": "10.0.6",
     "next-videos": "1.4.0",
     "react": "17.0.1",
     "react-bootstrap": "^1.4.0",
@@ -32,8 +32,9 @@
     "swiper": "^6.4.8"
   },
   "devDependencies": {
-    "fslightbox-react": "^1.6.2",
-    "webpack": "^5.36.2",
-    "webpack-cli": "^4.6.0"
+    "fslightbox-react": "^1.6.2"
+  },
+  "engines": {
+    "npm": "~5.0.0"
   }
 }
