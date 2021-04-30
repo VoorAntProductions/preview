@@ -33,8 +33,5 @@
   },
   "devDependencies": {
     "fslightbox-react": "^1.6.2"
-  },
-  "engines": {
-    "npm": "~5.0.0"
   }
 }
