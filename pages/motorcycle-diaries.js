@@ -63,20 +63,21 @@ export default function MotorcycleDiaries({
       description="A page that explains another company from Ant Productions"
     >
       <div className="show-mobile">
-        <video
-          className="video-motorcycle-screen"
-          autoPlay
-          playsInline
-          controls
-          muted
-          loop
-        >
-          <source src="assets/screencap.mov" type="video/mov" />
-          <source src="assets/screencap.mp4" type="video/mp4" />
-          <source src="assets/screencap.webm" type="video/webm" />
-          Your browser does not support the video tag.
-        </video>
-        <div className="m-tn25 d-flex justify-center">
+        <div className="d-flex justify-center">
+          <video
+            className="video-motorcycle-screen"
+            autoPlay
+            playsInline
+            muted
+            loop
+          >
+            <source src="assets/motorcycle-diaries.mp4" type="video/mp4" />
+            <source src="assets/motorcycle-diaries.ogg" type="video/ogg" />
+            <source src="assets/motorcycle-diaries.webm" type="video/webm" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div className="d-flex justify-center">
           <a
             href={motorcycleDiariesInfo.websiteLink}
             target="_blank"
@@ -84,6 +85,10 @@ export default function MotorcycleDiaries({
           >
             view website
           </a>
+        </div>
+        <div className="container-mine">
+          <h2 className="m-b40 small--m-t60">motorcycle diaries</h2>
+          <ReactMarkdown source={motorcycleDiariesInfo.Description} />
         </div>
       </div>
       <div className="container-mine">
@@ -95,13 +100,12 @@ export default function MotorcycleDiaries({
                   className="video-motorcycle-screen"
                   autoPlay
                   playsInline
-                  controls
                   muted
                   loop
                 >
-                  <source src="assets/screencap.mov" type="video/mov" />
-                  <source src="assets/screencap.mp4" type="video/mp4" />
-                  <source src="assets/screencap.webm" type="video/webm" />
+                  <source src="assets/motorcycle.mp4" type="video/mp4" />
+                  <source src="assets/motorcycle.ogg" type="video/ogg" />
+                  <source src="assets/motorcycle.webm" type="video/webm" />
                   Your browser does not support the video tag.
                 </video>
                 <a
@@ -116,7 +120,7 @@ export default function MotorcycleDiaries({
           </div>
           <div className="grid__item grid__item-special large--one-third">
             <div className="d-flex sm-flex-col">
-              <div>
+              <div className="show-desktop">
                 <h2 className="m-b40 small--m-t60">motorcycle diaries</h2>
                 <ReactMarkdown source={motorcycleDiariesInfo.Description} />
               </div>

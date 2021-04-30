@@ -1,10 +1,8 @@
 import Layout from "../components/layout";
 import { getImages } from "../lib/api";
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { Image, Transformation, Placeholder } from "cloudinary-react";
 import FsLightbox from "fslightbox-react";
-import Gallery from "react-photo-gallery";
-import Carousel, { Modal, ModalGateway } from "react-images";
 
 export default function Locations({ images }) {
   const items = images; //… your array, filled with values
@@ -270,7 +268,7 @@ export default function Locations({ images }) {
         <div className="grid">
           {mobileImages.length > 0 &&
             mobileImages.map((el, key) => (
-              <div key={key} className="grid__item one-whole">
+              <div key={key} className="grid__item one-whole medium--one-half">
                 <Image
                   cloudName="dx8wgl3t3"
                   publicId={el.publicId}
