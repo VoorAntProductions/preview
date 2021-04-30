@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -H 0.0.0.0 -p ${PORT:-8080}"
   },
   "dependencies": {
     "bootstrap": "^4.5.3",
@@ -31,6 +31,8 @@
     "swiper": "^6.4.8"
   },
   "devDependencies": {
-    "fslightbox-react": "^1.6.2"
+    "fslightbox-react": "^1.6.2",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0"
   }
 }
