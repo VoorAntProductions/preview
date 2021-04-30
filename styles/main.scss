@@ -204,6 +204,17 @@ video,
   width: 90%;
   background-color: black;
   z-index: 1;
+
+  @include media-breakpoint-down(md) {
+    height: 354px;
+  }
+  @include media-breakpoint-down(sm) {
+    height: 156px;
+  }
+  /* iPads (landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    height: 377px;
+  }
 }
 
 .overlay-cont {
@@ -292,6 +303,10 @@ video,
     bottom: 0;
     border-bottom: 2px solid $secondary;
     width: 25%;
+
+    @include media-breakpoint-down(md) {
+      width: 25px;
+    }
   }
 
   :hover {
@@ -333,9 +348,15 @@ video,
   min-height: 81vh;
   margin-top: 150px;
 
+  overflow-x: hidden;
+
   @include media-breakpoint-down(md) {
     margin-top: 75px;
   }
+  // /* iPads (landscape) ----------- */
+  // @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  //   margin-top: 125px;
+  // }
 }
 
 .home {
@@ -510,12 +531,16 @@ footer {
   backdrop-filter: blur(10px);
 }
 .detail-head-image {
-  // width: 926px;
-  // height: 670px;
   object-fit: cover;
+
   @include media-breakpoint-down(lg) {
     width: 670px;
     height: 470px;
+  }
+
+  /* iPads (landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    width: 60vw;
   }
   @include media-breakpoint-down(md) {
     width: 100vw;
@@ -1035,8 +1060,9 @@ footer {
 #equalizer {
   margin-left: 30px;
   height: 20px;
-  position: absolute;
+  // position: absolute;
   bottom: 0;
+  padding-top: 25px;
 
   .bar {
     position: relative;
@@ -1149,7 +1175,7 @@ footer {
 
   .nav {
     align-items: flex-start !important;
-    padding-left: 55px;
+    padding-left: 79px;
   }
 
   .nav-item {
@@ -1244,13 +1270,17 @@ footer {
     width: 480px;
     height: 268px;
   }
+  /* iPads (landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    width: 50vw;
+  }
   @include media-breakpoint-down(md) {
     width: 100%;
     height: 100%;
   }
   @include media-breakpoint-down(sm) {
     width: 100%;
-    height: 100%;
+    height: 217px;
   }
 }
 
@@ -1345,6 +1375,10 @@ footer {
   @include media-breakpoint-down(md) {
     display: none;
   }
+  /* iPads (landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    display: none;
+  }
 }
 
 .text-max-width {
@@ -1364,10 +1398,14 @@ footer {
     width: 430px;
   }
   @include media-breakpoint-down(md) {
-    width: 339px;
+    width: 50vw;
   }
   @include media-breakpoint-down(sm) {
     width: 100vw;
+  }
+  /* iPads (landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    width: 50vw;
   }
 }
 
@@ -1388,6 +1426,10 @@ footer {
   @include media-breakpoint-down(sm) {
     width: 100vw;
     margin-left: -60px;
+  }
+  /* iPads (landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    width: 60vw;
   }
 }
 
@@ -1448,6 +1490,10 @@ footer {
   @include media-breakpoint-down(md) {
     display: none;
   }
+  /* iPads (landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    display: none;
+  }
 }
 
 .show-desktop-flex {
@@ -1456,11 +1502,20 @@ footer {
   @include media-breakpoint-down(md) {
     display: none;
   }
+  /* iPads (landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    display: none;
+  }
 }
 
 .show-mobile {
+  opacity: 1 !important;
   display: none;
   @include media-breakpoint-down(md) {
+    display: inline;
+  }
+  /* iPads (landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
     display: inline;
   }
 }
@@ -1476,9 +1531,11 @@ footer {
 .home {
   .copywright-text {
     @include media-breakpoint-down(md) {
-      position: absolute;
-      right: 15px;
-      bottom: 0;
+      // position: absolute;
+      // right: 15px;
+      // bottom: 0;
+
+      padding-top: -25px;
     }
   }
 }
