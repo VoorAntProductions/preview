@@ -206,14 +206,14 @@ video,
   z-index: 1;
 
   @include media-breakpoint-down(md) {
-    height: 354px;
+    height: 170px;
   }
   @include media-breakpoint-down(sm) {
     height: 156px;
   }
   /* iPads (landscape) ----------- */
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-    height: 377px;
+    height: 220px;
   }
 }
 
@@ -241,6 +241,12 @@ video,
     padding-top: 21px;
   }
   @include media-breakpoint-down(md) {
+    padding-left: 0px;
+    padding-top: 0px;
+  }
+
+  /* iPads (landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
     padding-left: 0px;
     padding-top: 0px;
   }
@@ -369,9 +375,11 @@ video,
 
 .home-buttons {
   display: block;
+  margin-top: 50px;
   @include media-breakpoint-down(sm) {
     display: flex;
     flex-direction: column;
+    margin-top: 30px;
   }
 }
 
@@ -841,7 +849,8 @@ footer {
     margin-right: 0px;
     height: 100%;
     justify-content: center;
-    margin-top: 343px;
+    margin-top: 300px;
+    margin-bottom: 30px;
   }
 }
 
@@ -1119,21 +1128,6 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  // height: 25vh;
-
-  // @include media-breakpoint-down(lg) {
-  //   height: 30vh;
-  // }
-  // /* Landscape */
-  // @media screen and (orientation: landscape) {
-  //   /* Landscape styles here */
-  //   @include media-breakpoint-down(xl) {
-  //     height: 30vh;
-  //   }
-  //   @include media-breakpoint-down(md) {
-  //     height: 80vh;
-  //   }
-  // }
 }
 .swiper-scrollbar {
   height: 3px;
@@ -1175,7 +1169,7 @@ footer {
 
   .nav {
     align-items: flex-start !important;
-    padding-left: 79px;
+    padding-left: 100px;
   }
 
   .nav-item {
@@ -1531,11 +1525,94 @@ footer {
 .home {
   .copywright-text {
     @include media-breakpoint-down(md) {
-      // position: absolute;
-      // right: 15px;
-      // bottom: 0;
+      position: absolute;
+      right: 15px;
+    }
 
-      padding-top: -25px;
+    @supports (-webkit-overflow-scrolling: touch) {
+      /* CSS specific to iOS devices only */
+      /* iPhone Portrait */
+      @media screen and (max-device-width: 480px) and (orientation: portrait) {
+        bottom: -100px;
+      }
+      /* iPhone Landscape */
+      @media screen and (max-device-width: 480px) and (orientation: landscape) {
+        bottom: -100px;
+      }
+      /* iPad Portrait */
+      @media screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait) {
+        bottom: 0;
+      }
+    }
+  }
+}
+
+.detect-screen {
+  .on-off-buttons {
+    display: flex;
+
+    @supports (-webkit-overflow-scrolling: touch) {
+      /* CSS specific to iOS devices only */
+      /* iPhone Portrait */
+      @media screen and (max-device-width: 480px) and (orientation: portrait) {
+        display: none;
+      }
+      /* iPhone Landscape */
+      @media screen and (max-device-width: 480px) and (orientation: landscape) {
+        display: none;
+      }
+      /* iPad Portrait */
+      @media screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait) {
+        display: none;
+      }
+      /* iPad Landscape */
+      @media screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: landscape) {
+        display: none;
+      }
+    }
+  }
+  .show-device {
+    display: none;
+    @supports (-webkit-overflow-scrolling: touch) {
+      /* CSS specific to iOS devices only */
+      /* iPhone Portrait */
+      @media screen and (max-device-width: 480px) and (orientation: portrait) {
+        display: inline;
+      }
+      /* iPhone Landscape */
+      @media screen and (max-device-width: 480px) and (orientation: landscape) {
+        display: inline;
+      }
+      /* iPad Portrait */
+      @media screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait) {
+        display: inline;
+      }
+      /* iPad Landscape */
+      @media screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: landscape) {
+        display: inline;
+      }
+    }
+  }
+  .smaller {
+    display: inline;
+    @supports (-webkit-overflow-scrolling: touch) {
+      /* CSS specific to iOS devices only */
+      /* iPhone Portrait */
+      @media screen and (max-device-width: 480px) and (orientation: portrait) {
+        display: none;
+      }
+      /* iPhone Landscape */
+      @media screen and (max-device-width: 480px) and (orientation: landscape) {
+        display: none;
+      }
+      /* iPad Portrait */
+      @media screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait) {
+        display: none;
+      }
+      /* iPad Landscape */
+      @media screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: landscape) {
+        display: none;
+      }
     }
   }
 }

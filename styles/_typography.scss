@@ -17,6 +17,8 @@ h1 {
   width: 43.7rem;
   text-shadow: 0px 0px 5px $black;
 
+  margin-bottom: 0px;
+
   @include media-breakpoint-down(sm) {
     font-size: 2.8rem;
     width: 18rem;
