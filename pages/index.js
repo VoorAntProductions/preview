@@ -41,10 +41,10 @@ export default function Home() {
         <div className="cursorTrailing" ref={inputEl} />
         <div className="container container-XX ">
           <div className="start-screen-align">
-            <div className="XX-bg">
+            <div className="XX-bg detect-screen">
               <MusicBar muted={isMuted} id="equalizer-start-screen" />
 
-              <div className="d-flex w-50 justify-around">
+              <div className="w-50 justify-around on-off-buttons">
                 <p
                   className={isMuted === false ? "bold pf-25" : "pf-25"}
                   onClick={() => setIsMuted(false)}
@@ -62,6 +62,7 @@ export default function Home() {
               <p>
                 Music affects your mood <br />
                 To have the best experience, turn it on <br />
+                <span className="show-device">at the bottom of the page</span>
                 <span className="smaller">
                   You can always turn it on / off at the bottom of the page
                 </span>
@@ -100,13 +101,6 @@ export default function Home() {
             background: transparent;
           }
         `}</style>
-        {/* <video autoPlay muted playsInline loop className="test bla">
-          <source src="assets/tre.mp4" type="video/mp4" />
-          <source src="assets/tre.ogg" type="video/ogg" />
-          <source src="assets/tre.webm" type="video/webm" />
-          Your browser does not support HTML video.
-        </video> */}
-
         <video autoPlay muted={isMuted} playsInline loop className="test">
           <source src="assets/tre.mp4" type="video/mp4" />
           <source src="assets/tre.ogg" type="video/ogg" />
@@ -118,7 +112,7 @@ export default function Home() {
             <h1>
               Our <span className="highlight">ants</span> move mountains
             </h1>
-            <div className="m-t50 home-buttons">
+            <div className="home-buttons">
               <a href="/events" className="btn-outline btn-1">
                 events
               </a>

@@ -187,7 +187,10 @@ export default function MotorcycleDiaries({
             <div className="grid">
               {motorcycleDiariesVideos.length > 0 &&
                 motorcycleDiariesVideos.map((m, i) => (
-                  <div key={i} className="grid__item one-whole">
+                  <div
+                    key={i}
+                    className="grid__item one-whole medium--one-half"
+                  >
                     <div
                       onClick={() => openLightboxOnSlide(i)}
                       className="overlay"
