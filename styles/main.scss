@@ -1256,12 +1256,11 @@ footer {
 }
 
 .video-motorcycle-screen {
+  width: 100%;
   @include media-breakpoint-down(xl) {
-    width: 900px;
     height: 505px;
   }
   @include media-breakpoint-down(lg) {
-    width: 480px;
     height: 268px;
   }
   /* iPads (landscape) ----------- */
@@ -1499,6 +1498,10 @@ footer {
   /* iPads (landscape) ----------- */
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
     display: none;
+  }
+
+  @supports (-webkit-touch-callout: none) {
+    /* CSS specific to iOS devices */
   }
 }
 
