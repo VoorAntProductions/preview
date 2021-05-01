@@ -103,9 +103,18 @@ export default function MotorcycleDiaries({
                   muted
                   loop
                 >
-                  <source src="assets/motorcycle.mp4" type="video/mp4" />
-                  <source src="assets/motorcycle.ogg" type="video/ogg" />
-                  <source src="assets/motorcycle.webm" type="video/webm" />
+                  <source
+                    src="assets/motorcycle-diaries.mp4"
+                    type="video/mp4"
+                  />
+                  <source
+                    src="assets/motorcycle-diaries.ogg"
+                    type="video/ogg"
+                  />
+                  <source
+                    src="assets/motorcycle-diaries.webm"
+                    type="video/webm"
+                  />
                   Your browser does not support the video tag.
                 </video>
                 <a
